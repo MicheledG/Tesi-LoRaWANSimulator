@@ -2,16 +2,9 @@ package it.polito.mdg.lorawan.simulator.classes;
 
 public class DataRate {
 	
-	private int drId; //data rate id
 	private int sf; //spreading factor
 	private int bw; //bandwidth in Hz
 	
-	public int getDrId() {
-		return drId;
-	}
-	public void setDrId(int drId) {
-		this.drId = drId;
-	}
 	public int getSf() {
 		return sf;
 	}
@@ -23,6 +16,29 @@ public class DataRate {
 	}
 	public void setBw(int bw) {
 		this.bw = bw;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + bw;
+		result = prime * result + sf;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DataRate other = (DataRate) obj;
+		if (bw != other.bw)
+			return false;
+		if (sf != other.sf)
+			return false;
+		return true;
 	}
 	
 }

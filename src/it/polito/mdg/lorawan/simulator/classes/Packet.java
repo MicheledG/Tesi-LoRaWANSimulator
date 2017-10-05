@@ -1,8 +1,5 @@
 package it.polito.mdg.lorawan.simulator.classes;
 
-import java.time.Duration;
-import java.time.Instant;
-
 public class Packet implements Comparable<Packet> {
 		
 	private int devId;
@@ -11,61 +8,62 @@ public class Packet implements Comparable<Packet> {
 	private int channel;
 	private DataRate dr;
 	private double rssi;
-	private Instant startingTime;
-	private Duration airTime;
+	private double startingTime;
+	private double airTime;
+	
+	public Packet(int devId, int appId, int count, int channel, DataRate dr, double rssi, double startingTime,
+			double airTime) {
+		this.devId = devId;
+		this.appId = appId;
+		this.count = count;
+		this.channel = channel;
+		this.dr = dr;
+		this.rssi = rssi;
+		this.startingTime = startingTime;
+		this.airTime = airTime;
+	}
 	
 	public int getDevId() {
 		return devId;
 	}
-	public void setDevId(int devId) {
-		this.devId = devId;
-	}
+	
 	public int getAppId() {
 		return appId;
-	}
-	public void setAppId(int appId) {
-		this.appId = appId;
 	}
 	
 	public int getCount() {
 		return count;
 	}
-	public void setCount(int count) {
-		this.count = count;
-	}
 	
 	public double getRssi() {
 		return rssi;
 	}
-	public void setRssi(double rssi) {
-		this.rssi = rssi;
-	}
+	
 	public DataRate getDr() {
 		return dr;
 	}
-	public void setDr(DataRate dr) {
-		this.dr = dr;
-	}
+	
 	public int getChannel() {
 		return channel;
 	}
-	public void setChannel(int channel) {
-		this.channel = channel;
-	}
-	public Instant getStartingTime() {
+	
+	public double getStartingTime() {
 		return startingTime;
 	}
-	public void setStartingTime(Instant startingTime) {
-		this.startingTime = startingTime;
-	}
-	public Duration getAirTime() {
+	
+	public double getAirTime() {
 		return airTime;
 	}
-	public void setAirTime(Duration airTime) {
-		this.airTime = airTime;
+	
+	public double getEndTime() {
+		return this.startingTime+this.airTime;
 	}
+
 	@Override
 	public int compareTo(Packet o) {
-		return this.startingTime.compareTo(o.getStartingTime());
+		Double thisStartingTime = this.startingTime;
+		Double thatStartingTime = o.getStartingTime();
+		
+		return thisStartingTime.compareTo(thatStartingTime);
 	}
 }
