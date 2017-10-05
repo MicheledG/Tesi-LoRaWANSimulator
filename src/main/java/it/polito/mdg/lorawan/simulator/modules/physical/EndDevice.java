@@ -127,7 +127,6 @@ public class EndDevice {
 		return messageCount;
 	};
 	
-	//this method provides a static ADR!
 	private void computePacketParameters(){
 		
 		//compute airtime of the packet to send according to the datarate and the packet size
