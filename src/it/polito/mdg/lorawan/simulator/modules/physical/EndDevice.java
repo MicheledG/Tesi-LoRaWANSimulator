@@ -1,7 +1,11 @@
-package it.polito.mdg.lorawan.simulator.classes;
+package it.polito.mdg.lorawan.simulator.modules.physical;
 
 import java.util.List;
 import java.util.Vector;
+
+import it.polito.mdg.lorawan.simulator.modules.logical.Application;
+import it.polito.mdg.lorawan.simulator.modules.logical.DataRate;
+import it.polito.mdg.lorawan.simulator.modules.logical.Packet;
 
 public class EndDevice {
 	
@@ -123,6 +127,7 @@ public class EndDevice {
 		return messageCount;
 	};
 	
+	//this method provides a static ADR!
 	private void computePacketParameters(){
 		
 		//compute airtime of the packet to send according to the datarate and the packet size

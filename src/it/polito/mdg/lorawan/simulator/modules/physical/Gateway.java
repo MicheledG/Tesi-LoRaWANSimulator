@@ -1,7 +1,9 @@
-package it.polito.mdg.lorawan.simulator.classes;
+package it.polito.mdg.lorawan.simulator.modules.physical;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.polito.mdg.lorawan.simulator.modules.logical.Packet;
 
 public class Gateway {
 

@@ -1,4 +1,4 @@
-package it.polito.mdg.lorawan.simulator.classes;
+package it.polito.mdg.lorawan.simulator.modules.logical;
 
 public class Application {
 
