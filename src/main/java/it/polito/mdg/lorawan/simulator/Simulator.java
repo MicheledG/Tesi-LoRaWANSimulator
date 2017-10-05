@@ -35,8 +35,6 @@ public class Simulator {
 			return;
 		}
 		
-		System.out.println("Config Object\n"+config);
-		
 		
 	}
 

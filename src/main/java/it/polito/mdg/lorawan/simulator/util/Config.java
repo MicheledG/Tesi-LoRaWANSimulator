@@ -58,4 +58,8 @@ public class Config {
 		this.applications = applications;
 	}
 	
+	public void printConfiguration(){
+		//TODO
+	}
+	
 }
