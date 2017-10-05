@@ -5,6 +5,8 @@ public class DataRate {
 	private int sf; //spreading factor
 	private int bw; //bandwidth in Hz
 	
+	public DataRate(){};
+	
 	public int getSf() {
 		return sf;
 	}
