@@ -1,4 +1,4 @@
-package it.polito.mdg.lorawan.simulator.util;
+package it.polito.mdg.lorawan.simulator.model;
 
 import java.util.List;
 
@@ -60,6 +60,8 @@ public class Config {
 	
 	public void printConfiguration(){
 		//TODO
+		
+		
 	}
 	
 }

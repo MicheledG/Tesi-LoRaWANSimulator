@@ -1,0 +1,43 @@
+{
+  "range" : 1.0,
+  "endDeviceNumber" : 1000,
+  "rssiMax" : 10,
+  "dutyCycle" : 0.01,
+  "channelNumber" : 3,
+  "dataRates" : [ {
+    "sf" : 7,
+    "bw" : 125000
+  }, {
+    "sf" : 8,
+    "bw" : 125000
+  } ],
+  "applications" : [ {
+    "appId" : 1,
+    "deviceDensity" : 150.0,
+    "payloadSize" : 1,
+    "appInterval" : 1.5,
+    "packetInterval" : 1.5,
+    "npp" : 8,
+    "ih" : 1,
+    "cr" : 1,
+    "crc" : 1,
+    "CR" : 1,
+    "IH" : 1,
+    "Npp" : 8,
+    "CRC" : 1
+  }, {
+    "appId" : 2,
+    "deviceDensity" : 2000.0,
+    "payloadSize" : 12,
+    "appInterval" : 30.0,
+    "packetInterval" : 30.0,
+    "npp" : 6,
+    "ih" : 0,
+    "cr" : 2,
+    "crc" : 0,
+    "CR" : 2,
+    "IH" : 0,
+    "Npp" : 6,
+    "CRC" : 0
+  } ]
+}

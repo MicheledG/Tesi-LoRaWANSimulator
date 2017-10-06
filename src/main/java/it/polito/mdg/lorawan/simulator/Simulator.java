@@ -1,40 +1,36 @@
 package it.polito.mdg.lorawan.simulator;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import it.polito.mdg.lorawan.simulator.util.Config;
+import it.polito.mdg.lorawan.simulator.model.Config;
+import it.polito.mdg.lorawan.simulator.model.Results;
+import it.polito.mdg.lorawan.simulator.util.Configurator;
+import it.polito.mdg.lorawan.simulator.util.ResultsWriter;
 
 public class Simulator {
 
 	public static void main(String[] args) {
 		
-		//read the .json file with the configurations
-		byte[] jsonData;
-		try {
-			jsonData = Files.readAllBytes(Paths.get("config.json"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return;
-		}
-		
-		//create ObjectMapper instance
-		ObjectMapper objectMapper = new ObjectMapper();
-		
-		//convert json string to object
 		Config config;
+		
 		try {
-			config = objectMapper.readValue(jsonData, Config.class);
+			config = Configurator.configSimulator(args[0]);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Impossible to configure the simulator because: "+e.getMessage());
+			System.err.println("Simulation aborted!");
 			return;
 		}
 		
+		Results results = new Results();
+		
+		try {
+			ResultsWriter.writeResults(results, args[1]);
+		} catch (IOException e) {
+			System.err.println("Impossible to write the results in the designated file because: "+e.getMessage());
+			return;
+		}
+		
+		return;
 		
 	}
 
