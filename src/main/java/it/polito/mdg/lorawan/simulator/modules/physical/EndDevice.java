@@ -49,7 +49,7 @@ public class EndDevice {
 		
 		if(this.sentPackets.isEmpty()){
 			//first message to send
-			startingTime = this.packetAirTime * this.shiftRate;
+			startingTime = this.packetInterval * this.shiftRate;
 		}
 		else{
 			//following messages

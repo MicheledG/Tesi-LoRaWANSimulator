@@ -42,8 +42,10 @@ public class Gateway {
 			Packet interfered = sentPackets.get(i);
 			boolean collision = false;
 			for(int j = 0; j < totSentPackets && !collision; j++){
-				Packet interferer = sentPackets.get(j);
-				collision = this.checkCollision(interfered, interferer);
+				if(j!=i){
+					Packet interferer = sentPackets.get(j);
+					collision = this.checkCollision(interfered, interferer);
+				}
 			}
 			
 			if(!collision){

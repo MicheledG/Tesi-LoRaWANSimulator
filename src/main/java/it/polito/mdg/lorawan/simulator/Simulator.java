@@ -1,12 +1,15 @@
 package it.polito.mdg.lorawan.simulator;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import it.polito.mdg.lorawan.simulator.model.Config;
 import it.polito.mdg.lorawan.simulator.model.Results;
+import it.polito.mdg.lorawan.simulator.modules.logical.Packet;
 import it.polito.mdg.lorawan.simulator.modules.physical.EndDevice;
+import it.polito.mdg.lorawan.simulator.modules.physical.Gateway;
 import it.polito.mdg.lorawan.simulator.util.ApplicationsProfiler;
 import it.polito.mdg.lorawan.simulator.util.Configurator;
 import it.polito.mdg.lorawan.simulator.util.EndDeviceDeployer;
@@ -90,6 +93,24 @@ public class Simulator {
 		
 		//let the end devices send all their packets
 		EndDeviceScheduler.scheduleEndDevices(applicationPackets, endDevices);
+		
+		//collect the sent packets
+		List<Packet> sentPackets = new ArrayList<>();
+		for (EndDevice endDevice : endDevices) {
+			List<Packet> endDeviceSentPackets = endDevice.getSentPackets();
+			for (Packet packet : endDeviceSentPackets) {
+				sentPackets.add(packet);
+			}
+		}
+		
+		//instantiate the gateway
+		Gateway gw = new Gateway(config.getDecodingPath());
+		
+		//let the sent packets reach the gateway
+		List<Packet> receivedPackets = gw.receivePackets(sentPackets);
+		
+		//collect only the decoded packets among the received
+		List<Packet> decodedePackets = gw.decodePackets(receivedPackets);
 		
 		//write the results into the results file
 		Results results = new Results();

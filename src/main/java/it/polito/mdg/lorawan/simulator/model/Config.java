@@ -16,6 +16,7 @@ public class Config {
 	private double dutyCycle; //the max DC imposed to the end device for the transmissions
 	private int channelNumber; //the number of channel used for the simulation
 	private List<DataRate> dataRates; //list of allowed data rates (SF plus BW)
+	private int decodingPath; //the number of parallel decoding path of the gateway
 	private List<Application> applications; //list of all the applications
 	private int endDeviceNumber; //the number of end device to deploy in the area
 	
@@ -78,6 +79,12 @@ public class Config {
 	}
 	public void setDataRates(List<DataRate> dataRates) {
 		this.dataRates = dataRates;
+	}
+	public int getDecodingPath() {
+		return decodingPath;
+	}
+	public void setDecodingPath(int decodingPath) {
+		this.decodingPath = decodingPath;
 	}
 	public List<Application> getApplications() {
 		return applications;
