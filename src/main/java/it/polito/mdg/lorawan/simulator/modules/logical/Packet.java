@@ -7,17 +7,19 @@ public class Packet implements Comparable<Packet> {
 	private int count;
 	private int channel;
 	private DataRate dr;
+	private double distance;
 	private double rssi;
 	private double startingTime;
 	private double airTime;
 	
-	public Packet(int devId, int appId, int count, int channel, DataRate dr, double rssi, double startingTime,
+	public Packet(int devId, int appId, int count, int channel, DataRate dr, double distance, double rssi, double startingTime,
 			double airTime) {
 		this.devId = devId;
 		this.appId = appId;
 		this.count = count;
 		this.channel = channel;
 		this.dr = dr;
+		this.distance = distance;
 		this.rssi = rssi;
 		this.startingTime = startingTime;
 		this.airTime = airTime;
@@ -43,6 +45,10 @@ public class Packet implements Comparable<Packet> {
 		return dr;
 	}
 	
+	public double getDistance() {
+		return distance;
+	}
+
 	public int getChannel() {
 		return channel;
 	}

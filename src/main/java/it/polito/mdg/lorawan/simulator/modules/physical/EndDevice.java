@@ -14,6 +14,7 @@ public class EndDevice {
 	private int channel; //RF channel used by the end device
 	private DataRate dr; //Data Rate configuration used by the end device
 	private double dc; //Duty cycle imposed to the end device
+	private double distance; //the distance from the gateway in km
 	private double rssi; //Received Signal Strength Indication (in dB) of the packet sent by this end device and received by a Gateway
 	private double shiftRate; //random value between 0 and 1 used to shift the communications of the several end device deployed for a single application
 	private double packetAirTime;
@@ -21,7 +22,7 @@ public class EndDevice {
 	private Vector<Packet> sentPackets;
 	private int messageCount;
 	
-	public EndDevice(int devId, Application application, int channel, DataRate dr, double dc, double rssi, double shiftRate) {
+	public EndDevice(int devId, Application application, int channel, DataRate dr, double dc, double distance, double rssi, double shiftRate) {
 		
 		//set the parameters received by the external entities
 		this.devId = devId;
@@ -29,6 +30,7 @@ public class EndDevice {
 		this.channel = channel;
 		this.dr = dr;
 		this.dc = dc;
+		this.distance = distance;
 		this.rssi = rssi;
 		this.shiftRate = shiftRate;
 		
@@ -63,6 +65,7 @@ public class EndDevice {
 				this.messageCount,
 				this.channel,
 				this.dr,
+				this.distance,
 				this.rssi,
 				startingTime,
 				this.packetAirTime);
@@ -99,12 +102,12 @@ public class EndDevice {
 		return dc;
 	}
 
-	public double getRssi() {
-		return rssi;
+	public double getDistance() {
+		return distance;
 	}
 
-	public void setRssi(double rssi) {
-		this.rssi = rssi;
+	public double getRssi() {
+		return rssi;
 	}
 
 	public double getShiftRate() {

@@ -15,8 +15,11 @@ public class EndDeviceDeployer {
 			List<Application> applications,
 			Map<Integer, Integer> applicationEndDevices,
 			int channelsNumber,
-			double maxRssi,
-			double minRssi,
+			double txPower,
+			double maxDistance,
+			double heightGw,
+			double heightEd,
+			double frequency,
 			double dc,
 			List<DataRate> availableDataRates
 			) throws Exception {
@@ -27,13 +30,16 @@ public class EndDeviceDeployer {
 			N += applicationEntry.getValue();
 		}
 		
+		double distances[] = new double[N];
 		double rssi[] = new double[N];
-		int channel[] = new int[N];
+		int channels[] = new int[N];
 		
-		double deltaRssi = Math.abs(maxRssi - minRssi);
+		
 		for(int i = 0; i < N; i++){
-			rssi[i] = (Math.random() * deltaRssi) + minRssi;
-			channel[i] = (int) (Math.random() * channelsNumber); //be aware of approximation of interval to integer
+			distances[i] = (Math.random() * maxDistance);
+			rssi[i] = txPower + PathLossCalculator
+					.computeHataOkumura(heightGw, heightEd, frequency, distances[i]);
+			channels[i] = (int) (Math.random() * channelsNumber); //be aware of approximation of interval to integer
 		}
 		
 		List<EndDevice> deployedEndDevices = new ArrayList<>();		
@@ -45,8 +51,9 @@ public class EndDeviceDeployer {
 				EndDevice endDeviceToDeploy = configureEndDevice(
 						devId,
 						application,
-						channel[devId],
+						channels[devId],
 						dc,
+						distances[devId],
 						rssi[devId],
 						availableDataRates
 						);
@@ -63,6 +70,7 @@ public class EndDeviceDeployer {
 			Application application,
 			int channel,
 			double dc,
+			double distance,
 			double rssi,
 			List<DataRate> availableDataRates
 			) throws Exception{
@@ -84,7 +92,7 @@ public class EndDeviceDeployer {
 			throw new Exception("impossible to assign a suitable data rate for end device with rssi: "+rssi);
 		}
 		
-		EndDevice endDevice = new EndDevice(devId, application, channel, choosenDr, dc, rssi, Math.random());
+		EndDevice endDevice = new EndDevice(devId, application, channel, choosenDr, dc, distance, rssi, Math.random());
 		
 		return endDevice;
 	}

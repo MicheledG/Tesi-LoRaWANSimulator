@@ -10,6 +10,7 @@ import it.polito.mdg.lorawan.simulator.modules.physical.EndDevice;
 import it.polito.mdg.lorawan.simulator.util.ApplicationsProfiler;
 import it.polito.mdg.lorawan.simulator.util.Configurator;
 import it.polito.mdg.lorawan.simulator.util.EndDeviceDeployer;
+import it.polito.mdg.lorawan.simulator.util.EndDeviceScheduler;
 import it.polito.mdg.lorawan.simulator.util.PathLossCalculator;
 import it.polito.mdg.lorawan.simulator.util.ResultsWriter;
 
@@ -39,16 +40,6 @@ public class Simulator {
 		
 		//compute the total area covered
 		double area = Math.PI*Math.pow(config.getRange(), 2.0);
-		
-		//compute the max path loss
-		double maxPathLoss = PathLossCalculator.computeHataOkumura(
-				config.getGwHeight(),
-				config.getEdHeight(),
-				config.getFrequency(),
-				config.getRange());
-		
-		double maxRssi = config.getTxPower();
-		double minRssi = maxPathLoss + config.getTxPower();
 		
 		//compute the coverage of the application needs in terms of end device deployed
 		double applicationCoverageRate = ApplicationsProfiler
@@ -83,8 +74,11 @@ public class Simulator {
 					config.getApplications(),
 					applicationEndDevices,
 					config.getChannelNumber(),
-					maxRssi, 
-					minRssi,
+					config.getTxPower(), 
+					config.getRange(),
+					config.getGwHeight(),
+					config.getEdHeight(),
+					config.getFrequency(),
 					config.getDutyCycle(),
 					config.getDataRates()
 					);
@@ -95,7 +89,7 @@ public class Simulator {
 		}
 		
 		//let the end devices send all their packets
-		
+		EndDeviceScheduler.scheduleEndDevices(applicationPackets, endDevices);
 		
 		//write the results into the results file
 		Results results = new Results();
