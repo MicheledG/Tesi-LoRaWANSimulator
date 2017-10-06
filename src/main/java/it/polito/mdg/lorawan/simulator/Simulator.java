@@ -17,10 +17,20 @@ public class Simulator {
 
 	public static void main(String[] args) {
 		
+		String configurationFileName = null;
+		String resultsFileName = null;
+		
+		if(args.length > 0){
+			configurationFileName = args[0];
+		}
+		if(args.length > 1){
+			configurationFileName = args[1];
+		}
+		
 		//configure the simulator
 		Config config;		
 		try {
-			config = Configurator.configSimulator(args[0]);
+			config = Configurator.configSimulator(configurationFileName);
 		} catch (IOException e) {
 			System.err.println("Impossible to configure the simulator because: "+e.getMessage());
 			System.err.println("Simulation aborted!");
@@ -36,6 +46,9 @@ public class Simulator {
 				config.getEdHeight(),
 				config.getFrequency(),
 				config.getRange());
+		
+		double maxRssi = config.getTxPower();
+		double minRssi = maxPathLoss + config.getTxPower();
 		
 		//compute the coverage of the application needs in terms of end device deployed
 		double applicationCoverageRate = ApplicationsProfiler
@@ -69,8 +82,8 @@ public class Simulator {
 					config.getApplications(),
 					applicationEndDevices,
 					config.getChannelNumber(),
-					config.getRssiMax(), 
-					maxPathLoss,
+					maxRssi, 
+					minRssi,
 					config.getDutyCycle(),
 					config.getDataRates()
 					);
@@ -80,12 +93,13 @@ public class Simulator {
 			return;
 		}
 		
+		//let the end devices send all their packets
 		
 		
 		//write the results into the results file
 		Results results = new Results();
 		try {
-			ResultsWriter.writeResults(results, args[1]);
+			ResultsWriter.writeResults(results, resultsFileName);
 		} catch (IOException e) {
 			System.err.println("Impossible to write the results in the designated file because: "+e.getMessage());
 			return;

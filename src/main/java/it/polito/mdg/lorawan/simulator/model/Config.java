@@ -12,7 +12,7 @@ public class Config {
 	private double gwHeight; //height of the gateway antenna in m
 	private double edHeight; //height of the end device antennas in m
 	private double frequency; //carrier frequency expressed in MHz
-	private int rssiMax; //the MAX RSSI (a.k.a. minimum distance of and end device from a gateway)
+	private double txPower; //transmission power of the end devices
 	private double dutyCycle; //the max DC imposed to the end device for the transmissions
 	private int channelNumber; //the number of channel used for the simulation
 	private List<DataRate> dataRates; //list of allowed data rates (SF plus BW)
@@ -55,11 +55,11 @@ public class Config {
 	public void setEndDeviceNumber(int endDeviceNumber) {
 		this.endDeviceNumber = endDeviceNumber;
 	}
-	public int getRssiMax() {
-		return rssiMax;
+	public double getTxPower() {
+		return txPower;
 	}
-	public void setRssiMax(int rssiMax) {
-		this.rssiMax = rssiMax;
+	public void setTxPower(double txPower) {
+		this.txPower= txPower;
 	}
 	public double getDutyCycle() {
 		return dutyCycle;

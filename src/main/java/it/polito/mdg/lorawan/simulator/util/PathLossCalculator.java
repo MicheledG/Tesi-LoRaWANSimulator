@@ -20,8 +20,8 @@ public class PathLossCalculator {
 		}
 		
 		
-		double pathLoss = 69.55 + 26.16*Math.log10(f) - 13.82*Math.log10(heightGw) -
-				heightEdCorrection + Math.log10(d)*(44.9 - 6.55*Math.log10(heightGw));
+		double pathLoss = -1*(69.55 + (26.16*Math.log10(f)) - (13.82*Math.log10(heightGw)) -
+				heightEdCorrection + ((44.9 - (6.55*Math.log10(heightGw)))*Math.log10(d)));
 		
 	
 		return pathLoss; //in dB

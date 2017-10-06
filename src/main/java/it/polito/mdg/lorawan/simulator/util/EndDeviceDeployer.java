@@ -15,8 +15,8 @@ public class EndDeviceDeployer {
 			List<Application> applications,
 			Map<Integer, Integer> applicationEndDevices,
 			int channelsNumber,
-			int rssiMax,
-			double maxPathLoss,
+			double maxRssi,
+			double minRssi,
 			double dc,
 			List<DataRate> availableDataRates
 			) throws Exception {
@@ -30,9 +30,9 @@ public class EndDeviceDeployer {
 		double rssi[] = new double[N];
 		int channel[] = new int[N];
 		
-		double deltaRssi = rssiMax - maxPathLoss;
+		double deltaRssi = Math.abs(maxRssi - minRssi);
 		for(int i = 0; i < N; i++){
-			rssi[i] = (Math.random() * deltaRssi) - maxPathLoss;
+			rssi[i] = (Math.random() * deltaRssi) + minRssi;
 			channel[i] = (int) (Math.random() * channelsNumber); //be aware of approximation of interval to integer
 		}
 		

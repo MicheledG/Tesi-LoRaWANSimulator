@@ -1,39 +1,65 @@
 {
-	"range": 1.0,
+	"time":1440,
+	"range": 5,
+	"gwHeight": 25,
+	"edHeight": 2.5,
 	"endDeviceNumber": 1000,
-	"rssiMax": 10,
+	"frequency": 868,
+	"txPower": 14,
 	"dutyCycle": 0.01,
 	"channelNumber": 3,
 	"dataRates": [
 		{
-			"sf": 7,
-			"bw": 125000
+			"sf": 12,
+			"bw": 125000,
+			"minSensitivity": -137
+		},
+		{
+			"sf": 11,
+			"bw": 125000,
+			"minSensitivity": -135
+		},
+		{
+			"sf": 10,
+			"bw": 125000,
+			"minSensitivity": -133
+		},
+		{
+			"sf": 9,
+			"bw": 125000,
+			"minSensitivity": -130
 		},
 		{
 			"sf": 8,
-			"bw": 125000
-		}
+			"bw": 125000,
+			"minSensitivity": -129
+		},
+		{
+			"sf": 7,
+			"bw": 125000,
+			"minSensitivity": -124
+		}		
 	],
 	"applications": [
 		{
 			"appId": 1,
-			"deviceDensity": 150,
-			"payloadSize": 1,
+			"deviceDensity": 3800,
+			"payloadSize": 20,
 			"CR": 1,
 			"IH": 1,
 			"Npp": 8,
 			"CRC": 1,
-			"appInterval": 1.5 
+			"appInterval": 600 
 		},
 		{
 			"appId": 2,
-			"deviceDensity": 2000,
-			"payloadSize": 12, 
-			"CR": 2,
-			"IH": 0,
-			"Npp": 6,
-			"CRC": 0,
-			"appInterval": 30
+			"deviceDensity": 11500,
+			"payloadSize": 8, 
+			"CR": 1,
+			"IH": 1,
+			"Npp": 8,
+			"CRC": 1,
+			"appInterval": 86400
 		}
 	]
 }
