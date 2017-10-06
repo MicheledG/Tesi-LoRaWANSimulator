@@ -11,6 +11,7 @@ public class Config {
 	private double range; //circle area range in km
 	private double gwHeight; //height of the gateway antenna in m
 	private double edHeight; //height of the end device antennas in m
+	private double frequency; //carrier frequency expressed in MHz
 	private int rssiMax; //the MAX RSSI (a.k.a. minimum distance of and end device from a gateway)
 	private double dutyCycle; //the max DC imposed to the end device for the transmissions
 	private int channelNumber; //the number of channel used for the simulation
@@ -41,6 +42,12 @@ public class Config {
 	}
 	public void setEdHeight(double edHeight) {
 		this.edHeight = edHeight;
+	}
+	public double getFrequency() {
+		return frequency;
+	}
+	public void setFrequency(double frequency) {
+		this.frequency = frequency;
 	}
 	public int getEndDeviceNumber() {
 		return endDeviceNumber;

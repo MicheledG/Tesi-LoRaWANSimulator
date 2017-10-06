@@ -28,7 +28,11 @@ public class Simulator {
 		double area = Math.PI*Math.pow(config.getRange(), 2.0);
 		
 		//compute the max path loss
-		double maxPathLoss = PathLossCalculator.modelHataOkumura();
+		double maxPathLoss = PathLossCalculator.computeHataOkumura(
+				config.getGwHeight(),
+				config.getEdHeight(),
+				config.getFrequency(),
+				config.getRange());
 		
 		//compute the coverage of the application needs in terms of end device deployed
 		double applicationCoverageRate = ApplicationsProfiler
