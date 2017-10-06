@@ -73,9 +73,13 @@ public class Gateway {
 			
 		}
 		
+		int totReceivedPackets = receivedPackets.size();
+		int receivedRatio = (int)((((double) totReceivedPackets) / ((double)totSentPackets)) * 100);
+		
 		System.out.println("======================");		
 		System.out.println("GW: receiving phase completed!");
-		System.out.println("GW: number of received packets: "+receivedPackets.size());		
+		System.out.println("GW: number of received packets: "+totReceivedPackets);		
+		System.out.println("GW: received ratio: "+receivedRatio+"%");
 		System.out.println("======================");		
 		
 		return receivedPackets;
@@ -161,15 +165,19 @@ public class Gateway {
 				System.out.println("======================");		
 				System.out.println("GW: analyzed packet percent: "+analyzedPacketPercent+"%");
 				System.out.println("======================");
-			}			
+			}
+			i++;
 		}
 		
 		//sort the decoded packets on the starting time
-		java.util.Collections.sort(decodedPackets);
+		java.util.Collections.sort(decodedPackets);		
+		int totDecodedPackets = decodedPackets.size();
+		int decodedRatio = (int)((((double)totDecodedPackets)/((double)totReceivedPackets))*100);
 		
 		System.out.println("======================");		
 		System.out.println("GW: decoding phase completed!");
-		System.out.println("GW: number of decoded packets: "+decodedPackets.size());		
+		System.out.println("GW: number of decoded packets: "+totDecodedPackets);		
+		System.out.println("GW: decoded ratio: "+decodedRatio+"%");
 		System.out.println("======================");
 		
 		return decodedPackets;

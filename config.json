@@ -3,7 +3,7 @@
 	"range": 5,
 	"gwHeight": 25,
 	"edHeight": 2.5,
-	"endDeviceNumber": 10000,
+	"endDeviceNumber": 1000,
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,
