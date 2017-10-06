@@ -36,6 +36,14 @@ public class Gateway {
 		List<Packet> receivedPackets = new ArrayList<>();
 		
 		int totSentPackets = sentPackets.size();
+		System.out.println("======================");		
+		System.out.println("GW: number of sent packets by end devices: "+totSentPackets);
+		System.out.println("GW: receiving phase starting!");
+		System.out.println("======================");
+		
+		double analyzedPacketRatio = 0; 
+		int analyzedPacketPercent = 0;
+		int difference = 0;
 		//detect if a packet collides with others
 		for(int i = 0; i < totSentPackets; i++){
 			//for each packet sent check the collision with all the others
@@ -49,16 +57,26 @@ public class Gateway {
 			}
 			
 			if(!collision){
-				//the packet under test didn't collided with the other packet => RECEIVED
+				//the packet under test didn't collided with the other packets => RECEIVED
 				receivedPackets.add(interfered);
-			}else{
-				//the packet under test collided with at least one other packet => NOT RECEIVED
-				continue;
 			}
+			
+			//notify the user with the progress
+			analyzedPacketRatio = ((double)(i+1))/((double)(totSentPackets));
+			difference = (int) (analyzedPacketRatio * 100) - analyzedPacketPercent;
+			if(difference > 0){
+				analyzedPacketPercent += difference;
+				System.out.println("======================");		
+				System.out.println("GW: analyzed packet percent: "+analyzedPacketPercent+"%");
+				System.out.println("======================");
+			}
+			
 		}
 		
-		//sort the received packets depending on the starting time
-		java.util.Collections.sort(receivedPackets);
+		System.out.println("======================");		
+		System.out.println("GW: receiving phase completed!");
+		System.out.println("GW: number of received packets: "+receivedPackets.size());		
+		System.out.println("======================");		
 		
 		return receivedPackets;
 	};
@@ -70,7 +88,7 @@ public class Gateway {
 				interfered.getDr().equals(interferer.getDr())){
 			
 			//the interfered and the interfere are on the same "virtual channel" 
-			//(same fisical channel and same data rate)
+			//(same physical channel and same data rate)
 			
 			//extract useful parameters
 			double interferedStartingTime = interfered.getStartingTime();
@@ -113,23 +131,46 @@ public class Gateway {
 		
 		List<Packet> decodedPackets = new ArrayList<>();
 		
+		int totReceivedPackets = receivedPackets.size();
+		
+		System.out.println("======================");		
+		System.out.println("GW: number of received packets by end devices: "+totReceivedPackets);
+		System.out.println("GW: decoding phase starting!");
+		System.out.println("======================");		
+		
 		//sort the received packets depending on the starting time
-		java.util.Collections.sort(receivedPackets);
+		java.util.Collections.sort(receivedPackets);		
 		
 		//decoded each received message finding a suitable decoding path in the gateway
 		//if no free path is found the packet is discarded
+		int i = 0;
+		double analyzedPacketRatio = 0; 
+		int analyzedPacketPercent = 0;
+		int difference = 0;
 		for (Packet packet : receivedPackets) {
 			boolean decoded = decodePacket(packet);
 			if(decoded){
 				decodedPackets.add(packet);
 			}
-			else{
-				continue;
-			}
+			
+			//notify the user with the progress
+			analyzedPacketRatio = ((double)(i+1))/((double)(totReceivedPackets));
+			difference = (int) (analyzedPacketRatio * 100) - analyzedPacketPercent;
+			if(difference > 0){
+				analyzedPacketPercent += difference;
+				System.out.println("======================");		
+				System.out.println("GW: analyzed packet percent: "+analyzedPacketPercent+"%");
+				System.out.println("======================");
+			}			
 		}
 		
 		//sort the decoded packets on the starting time
 		java.util.Collections.sort(decodedPackets);
+		
+		System.out.println("======================");		
+		System.out.println("GW: decoding phase completed!");
+		System.out.println("GW: number of decoded packets: "+decodedPackets.size());		
+		System.out.println("======================");
 		
 		return decodedPackets;
 	}

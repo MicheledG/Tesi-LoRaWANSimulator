@@ -111,6 +111,8 @@ public class Simulator {
 		//collect only the decoded packets among the received
 		List<Packet> decodedPackets = gw.decodePackets(receivedPackets);
 		
+		//TODO: collect the results! :D
+		
 		//write the results into the results file
 		Results results = new Results();
 		try {
