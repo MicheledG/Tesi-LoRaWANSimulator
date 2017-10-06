@@ -1,7 +1,10 @@
 package it.polito.mdg.lorawan.simulator;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +22,10 @@ import it.polito.mdg.lorawan.simulator.util.ResultsWriter;
 public class Simulator {
 
 	public static void main(String[] args) {
+		
+		System.out.println("======================");
+		System.out.println("SIM: configuring simulator...");
+		System.out.println("======================");
 		
 		String configurationFileName = null;
 		String resultsFileName = null;
@@ -69,6 +76,11 @@ public class Simulator {
 						config.getApplications(),
 						config.getTime());
 		
+		System.out.println("======================");
+		System.out.println("SIM: configuration completed!");
+		System.out.println("SIM: deploying the end devices...");
+		System.out.println("======================");
+		
 		//deploy the end devices required for each application in the configurated area (random positions)
 		List<EndDevice> endDevices;
 		try {
@@ -85,10 +97,17 @@ public class Simulator {
 					config.getDataRates()
 					);
 		} catch (Exception e) {
-			System.err.println("Impossible to deplot the end devices because: "+e.getMessage());
+			System.err.println("Impossible to deploy the end devices because: "+e.getMessage());
 			System.err.println("Simulation aborted!");
 			return;
 		}
+		
+		Instant simulationStart = Instant.now();
+		
+		System.out.println("======================");
+		System.out.println("SIM: deployment completed!");
+		System.out.println("SIM: starting simulation... ");
+		System.out.println("======================");
 		
 		//let the end devices send all their packets
 		EndDeviceScheduler.scheduleEndDevices(applicationPackets, endDevices);
@@ -112,15 +131,35 @@ public class Simulator {
 		List<Packet> decodedPackets = gw.decodePackets(receivedPackets);
 		
 		//TODO: collect the results! :D
+		int totSentPackets = sentPackets.size();
+		int totReceivedPackets = receivedPackets.size();
+		int receivedRatio = (int)((((double)totReceivedPackets)/((double)totSentPackets))*100);
+		int totDecodedPackets = decodedPackets.size();
+		int decodedRatio = (int)((((double)totDecodedPackets)/((double)totReceivedPackets))*100);
 		
-		//write the results into the results file
-		Results results = new Results();
-		try {
-			ResultsWriter.writeResults(results, resultsFileName);
-		} catch (IOException e) {
-			System.err.println("Impossible to write the results in the designated file because: "+e.getMessage());
-			return;
-		}
+		Instant simulationEnd = Instant.now();
+		Duration gap = Duration.between(simulationStart, simulationEnd); 
+		
+		
+		System.out.println("======================");
+		System.out.println("SIM: simulation completed in " + gap.toString());
+		System.out.println("SIM: number of sent packets: "+totSentPackets);
+		System.out.println("SIM: number of received packets: "+totReceivedPackets);		
+		System.out.println("SIM: received ratio: "+receivedRatio+"%");
+		System.out.println("SIM: number of decoded packets: "+totDecodedPackets);		
+		System.out.println("SIM: decoded ratio: "+decodedRatio+"%");
+		System.out.println("SIM: check out results file for deeper analysis!");
+		System.out.println("======================");
+		
+		
+//		//write the results into the results file
+//		Results results = new Results();
+//		try {
+//			ResultsWriter.writeResults(results, resultsFileName);
+//		} catch (IOException e) {
+//			System.err.println("Impossible to write the results in the designated file because: "+e.getMessage());
+//			return;
+//		}
 		
 		return;
 		
