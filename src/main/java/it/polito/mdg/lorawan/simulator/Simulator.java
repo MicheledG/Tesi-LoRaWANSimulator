@@ -14,7 +14,6 @@ import it.polito.mdg.lorawan.simulator.util.ApplicationsProfiler;
 import it.polito.mdg.lorawan.simulator.util.Configurator;
 import it.polito.mdg.lorawan.simulator.util.EndDeviceDeployer;
 import it.polito.mdg.lorawan.simulator.util.EndDeviceScheduler;
-import it.polito.mdg.lorawan.simulator.util.PathLossCalculator;
 import it.polito.mdg.lorawan.simulator.util.ResultsWriter;
 
 public class Simulator {
@@ -110,7 +109,7 @@ public class Simulator {
 		List<Packet> receivedPackets = gw.receivePackets(sentPackets);
 		
 		//collect only the decoded packets among the received
-		List<Packet> decodedePackets = gw.decodePackets(receivedPackets);
+		List<Packet> decodedPackets = gw.decodePackets(receivedPackets);
 		
 		//write the results into the results file
 		Results results = new Results();
