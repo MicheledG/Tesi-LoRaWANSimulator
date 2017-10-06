@@ -146,7 +146,10 @@ public class EndDevice {
 		int PHYPayloadSize = MACPayloadSize + 5;
 		int PL = PHYPayloadSize;
 		
-		double packetSymbols = (Npp + 4.25) + 8 + Math.max((int)((8*PL-4*SF+28+16*CRC-20*IH)/(4*(SF-2*DE)))*(CR+4),0);
+		double numerator = 8*PL-4*SF+28+16*CRC-20*IH;
+		double denominator = 4*(SF-2*DE);
+		double ceiling = Math.ceil(numerator/denominator);
+		double packetSymbols = (Npp + 4.25) + 8 + Math.max(ceiling*(CR+4),0);
 		double symbolTime = Math.pow(2, SF)/BW; //s
 		
 		this.packetAirTime = packetSymbols*symbolTime;

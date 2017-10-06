@@ -77,8 +77,9 @@ public class Simulator {
 						config.getTime());
 		
 		//deploy the end devices required for each application in the configurated area (random positions)
+		List<EndDevice> endDevices;
 		try {
-			List<EndDevice> endDevices = EndDeviceDeployer.deployEndDevices(
+			endDevices = EndDeviceDeployer.deployEndDevices(
 					config.getApplications(),
 					applicationEndDevices,
 					config.getChannelNumber(),

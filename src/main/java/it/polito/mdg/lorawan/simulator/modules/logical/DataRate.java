@@ -56,8 +56,8 @@ public class DataRate implements Comparable<DataRate> {
 	@Override
 	public int compareTo(DataRate o) {
 		Double thisSensitivity = this.getMinSensitivity();
-		Double thatSensitivity = o.getMinSensitivity();
-		return thisSensitivity.compareTo(thatSensitivity);		
+		Double thatSensitivity = o.getMinSensitivity();		
+		return -1*thisSensitivity.compareTo(thatSensitivity);		
 	}
 	
 }
