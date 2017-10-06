@@ -7,19 +7,40 @@ import it.polito.mdg.lorawan.simulator.modules.logical.DataRate;
 
 public class Config {
 
+	private int time; //simulation time in minutes
 	private double range; //circle area range in km
-	private int endDeviceNumber; //the number of end device to deploy in the area
+	private double gwHeight; //height of the gateway antenna in m
+	private double edHeight; //height of the end device antennas in m
 	private int rssiMax; //the MAX RSSI (a.k.a. minimum distance of and end device from a gateway)
 	private double dutyCycle; //the max DC imposed to the end device for the transmissions
 	private int channelNumber; //the number of channel used for the simulation
 	private List<DataRate> dataRates; //list of allowed data rates (SF plus BW)
 	private List<Application> applications; //list of all the applications
+	private int endDeviceNumber; //the number of end device to deploy in the area
 	
+	public int getTime() {
+		return time;
+	}
+	public void setTime(int time) {
+		this.time = time;
+	}
 	public double getRange() {
 		return range;
 	}
 	public void setRange(double range) {
 		this.range = range;
+	}
+	public double getGwHeight() {
+		return gwHeight;
+	}
+	public void setGwHeight(double gwHeight) {
+		this.gwHeight = gwHeight;
+	}
+	public double getEdHeight() {
+		return edHeight;
+	}
+	public void setEdHeight(double edHeight) {
+		this.edHeight = edHeight;
 	}
 	public int getEndDeviceNumber() {
 		return endDeviceNumber;

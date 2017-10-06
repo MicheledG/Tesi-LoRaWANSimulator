@@ -4,6 +4,7 @@ public class DataRate {
 	
 	private int sf; //spreading factor
 	private int bw; //bandwidth in Hz
+	private double minSensitivity; //minimum sensitivity for the end device to decode a message with this DataRate
 	
 	public DataRate(){};
 	
@@ -19,6 +20,14 @@ public class DataRate {
 	public void setBw(int bw) {
 		this.bw = bw;
 	}
+	public double getMinSensitivity() {
+		return minSensitivity;
+	}
+
+	public void setMinSensitivity(double minSensitivity) {
+		this.minSensitivity = minSensitivity;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
