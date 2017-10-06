@@ -1,6 +1,6 @@
 package it.polito.mdg.lorawan.simulator.modules.logical;
 
-public class DataRate {
+public class DataRate implements Comparable<DataRate> {
 	
 	private int sf; //spreading factor
 	private int bw; //bandwidth in Hz
@@ -50,6 +50,14 @@ public class DataRate {
 		if (sf != other.sf)
 			return false;
 		return true;
+	}
+
+	//higher sensitivity means shorter range (dued to min airtime) 
+	@Override
+	public int compareTo(DataRate o) {
+		Double thisSensitivity = this.getMinSensitivity();
+		Double thatSensitivity = o.getMinSensitivity();
+		return thisSensitivity.compareTo(thatSensitivity);		
 	}
 	
 }

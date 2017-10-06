@@ -1,12 +1,15 @@
 package it.polito.mdg.lorawan.simulator;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import it.polito.mdg.lorawan.simulator.model.Config;
 import it.polito.mdg.lorawan.simulator.model.Results;
+import it.polito.mdg.lorawan.simulator.modules.physical.EndDevice;
 import it.polito.mdg.lorawan.simulator.util.ApplicationsProfiler;
 import it.polito.mdg.lorawan.simulator.util.Configurator;
+import it.polito.mdg.lorawan.simulator.util.EndDeviceDeployer;
 import it.polito.mdg.lorawan.simulator.util.PathLossCalculator;
 import it.polito.mdg.lorawan.simulator.util.ResultsWriter;
 
@@ -59,6 +62,25 @@ public class Simulator {
 				.computeApplicationPackets(
 						config.getApplications(),
 						config.getTime());
+		
+		//deploy the end devices required for each application in the configurated area (random positions)
+		try {
+			List<EndDevice> endDevices = EndDeviceDeployer.deployEndDevices(
+					config.getApplications(),
+					applicationEndDevices,
+					config.getChannelNumber(),
+					config.getRssiMax(), 
+					maxPathLoss,
+					config.getDutyCycle(),
+					config.getDataRates()
+					);
+		} catch (Exception e) {
+			System.err.println("Impossible to deplot the end devices because: "+e.getMessage());
+			System.err.println("Simulation aborted!");
+			return;
+		}
+		
+		
 		
 		//write the results into the results file
 		Results results = new Results();
