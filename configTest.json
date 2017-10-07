@@ -1,9 +1,9 @@
 {
-	"time":10080,
+	"time":1000000,
 	"range": 5,
 	"gwHeight": 25,
 	"edHeight": 2.5,
-	"endDeviceNumber": 1000,
+	"endDeviceNumber": 1,
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,
@@ -41,16 +41,16 @@
 			"minSensitivity": -124
 		}		
 	],
-	"applications": [	
+	"applications": [
 		{
 			"appId": 1,
 			"deviceDensity": 1000,
-			"payloadSize": 9,
+			"payloadSize": 1,
 			"CR": 1,
 			"IH": 1,
 			"Npp": 8,
 			"CRC": 1,
-			"appInterval": 60  
+			"appInterval": 10
 		}
 	]
 }

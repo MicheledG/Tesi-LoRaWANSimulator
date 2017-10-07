@@ -1,7 +1,7 @@
 package it.polito.mdg.lorawan.simulator.modules.physical;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import it.polito.mdg.lorawan.simulator.modules.logical.Application;
 import it.polito.mdg.lorawan.simulator.modules.logical.DataRate;
@@ -19,7 +19,7 @@ public class EndDevice {
 	private double shiftRate; //random value between 0 and 1 used to shift the communications of the several end device deployed for a single application
 	private double packetAirTime;
 	private double packetInterval;
-	private Vector<Packet> sentPackets;
+	private List<Packet> sentPackets;
 	private int messageCount;
 	
 	public EndDevice(int devId, Application application, int channel, DataRate dr, double dc, double distance, double rssi, double shiftRate) {
@@ -38,7 +38,7 @@ public class EndDevice {
 		this.computePacketParameters();
 	
 		//set packet list to start
-		this.sentPackets = new Vector<>();
+		this.sentPackets = new ArrayList<>();
 		this.messageCount = 0;
 	}
 	
@@ -53,7 +53,7 @@ public class EndDevice {
 		}
 		else{
 			//following messages
-			double lastMessageStartingTime = this.sentPackets.lastElement().getStartingTime();
+			double lastMessageStartingTime = this.sentPackets.get(messageCount-1).getStartingTime();
 			startingTime = lastMessageStartingTime + this.packetAirTime + this.packetInterval;
 		}
 		
@@ -71,7 +71,7 @@ public class EndDevice {
 				this.packetAirTime);
 		
 		//"send the packet" inserting it in the list
-		this.sentPackets.addElement(packet);
+		this.sentPackets.add(packet);
 		
 		
 	};

@@ -1,0 +1,72 @@
+results:
+
+- result 1:
+-- time = 1000 min
+-- interval = 10 s
+-- N = 1
+-- packets = 6000
+-- sim time = 0.015 s
+
+- result 2:
+-- time = 10'000 min
+-- interval = 10 s
+-- N = 1
+-- packets = 60'000
+-- sim time = 0.044 s
+
+- result 3:
+-- time = 100'000 min (70 days)
+-- interval = 10 s
+-- N = 1
+-- packets = 600'000
+-- sim time = 0.169 s
+
+- result 4:
+-- time = 1'000'000 min (2 years)
+-- interval = 10 s
+-- N = 1
+-- packets = 6'000'000
+-- sim time = 2.733 s
+
+- result 5:
+-- time = 10'000'000 min (19 years)
+-- interval = 10 s
+-- N = 1
+-- packets = 60'000'000
+-- sim time = FAILED => problem is RAM and GarbageCollection
+
+- result 6:
+-- time = 1000 min
+-- interval = 60'000 s
+-- N = 6'000
+-- packets = 6'000
+-- sim time = 0.024 s
+
+- result 7:
+-- time = 1'000 min
+-- interval = 60'000 s
+-- N = 60'000
+-- packets = 60'000
+-- sim time =  0.129s
+
+- result 8:
+-- time = 1'000 min
+-- interval = 60'000 s
+-- N = 600'000
+-- packets = 600'000
+-- sim time =  1.129s
+
+- result 8:
+-- time = 1'000 min
+-- interval = 60'000 s
+-- N = 6'000'000
+-- packets = 6'000'000
+-- sim time =  21.305s
+
+- result 9:
+-- time = 1'000 min
+-- interval = 60'000 s
+-- N = 60'000'000
+-- packets = 60'000'000
+-- sim time = FAILED => problem is RAM and GarbageCollection
+

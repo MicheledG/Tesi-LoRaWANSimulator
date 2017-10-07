@@ -136,6 +136,7 @@ public class Simulator {
 		int receivedRatio = (int)((((double)totReceivedPackets)/((double)totSentPackets))*100);
 		int totDecodedPackets = decodedPackets.size();
 		int decodedRatio = (int)((((double)totDecodedPackets)/((double)totReceivedPackets))*100);
+		int dataExtractionRatio = (int)((((double)totDecodedPackets)/((double)totSentPackets))*100);
 		
 		Instant simulationEnd = Instant.now();
 		Duration gap = Duration.between(simulationStart, simulationEnd); 
@@ -143,11 +144,13 @@ public class Simulator {
 		
 		System.out.println("======================");
 		System.out.println("SIM: simulation completed in " + gap.toString());
+		System.out.println("SIM: number of deployed end devices: "+effectiveEndDevicesNumber);
 		System.out.println("SIM: number of sent packets: "+totSentPackets);
 		System.out.println("SIM: number of received packets: "+totReceivedPackets);		
 		System.out.println("SIM: received ratio: "+receivedRatio+"%");
 		System.out.println("SIM: number of decoded packets: "+totDecodedPackets);		
 		System.out.println("SIM: decoded ratio: "+decodedRatio+"%");
+		System.out.println("SIM: data extraction ratio (DER): "+dataExtractionRatio+"%");
 		System.out.println("SIM: check out results file for deeper analysis!");
 		System.out.println("======================");
 		
