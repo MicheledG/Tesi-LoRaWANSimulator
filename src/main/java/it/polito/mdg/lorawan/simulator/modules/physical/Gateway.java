@@ -1,6 +1,7 @@
 package it.polito.mdg.lorawan.simulator.modules.physical;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import it.polito.mdg.lorawan.simulator.modules.logical.Packet;
@@ -34,6 +35,7 @@ public class Gateway {
 	public List<Packet> receivePackets(List<Packet> sentPackets){
 		
 		List<Packet> receivedPackets = new ArrayList<>();
+		Collections.sort(sentPackets);		
 		
 		int totSentPackets = sentPackets.size();
 		System.out.println("======================");		
@@ -46,13 +48,15 @@ public class Gateway {
 		int difference = 0;
 		//detect if a packet collides with others
 		for(int i = 0; i < totSentPackets; i++){
-			//for each packet sent check the collision with all the others
+			//for each sent packet extract the subset of sent packets that could interfere with it
 			Packet interfered = sentPackets.get(i);
+			List<Packet> interferringPackets = this.detectInterferringPackets(interfered, i, sentPackets);			
 			boolean collision = false;
-			for(int j = 0; j < totSentPackets && !collision; j++){
-				if(j!=i){
-					Packet interferer = sentPackets.get(j);
-					collision = this.checkCollision(interfered, interferer);
+			for(Packet interferer: interferringPackets){
+				collision = this.checkLoRaCollision(interfered, interferer);
+				if(collision){
+					//a collision has been detected with the interfered packet
+					break;
 				}
 			}
 			
@@ -85,7 +89,62 @@ public class Gateway {
 		return receivedPackets;
 	};
 	
-	private boolean checkCollision(Packet interfered, Packet interferer) {
+	//WARNING: the sentPackets list must be already sorted to have first packet with lower starting time!
+	private List<Packet> detectInterferringPackets(Packet interfered,int interferedIndex, List<Packet> sentPackets) {
+		
+		int N = sentPackets.size();
+		List<Packet> interferers = new ArrayList<>();
+		
+		double interferedStartingTime = interfered.getStartingTime();
+		double interferedEndTime = interferedStartingTime + interfered.getAirTime();
+			
+		int i = interferedIndex - 1;
+		Packet interferer = null;
+		double interfererStartingTime;
+		double interfererEndTime;
+		//go backwards and collect all the packets started before the interfered packet
+		//that overlap with the interfered packet
+		boolean interferring = true;
+		while(interferring && i >= 0){
+			interferer = sentPackets.get(i);
+			interfererStartingTime = interferer.getStartingTime();
+			interfererEndTime = interfererStartingTime + interferer.getAirTime();
+			if(interfererEndTime >= interferedStartingTime){
+				//overlaps! => interference
+				interferers.add(interferer);
+				i--;
+			}
+			else{
+				//non overlapping!
+				interferring = false;
+			}
+		}
+		
+		//go forward and collect all the packets started after the interfered packet
+		//that overlap with the interfered packet
+		i = interferedIndex + 1;
+		interferring = true;
+		while(interferring && i < N){
+			interferer = sentPackets.get(i);
+			interfererStartingTime = interferer.getStartingTime();
+			interfererEndTime = interfererStartingTime + interferer.getAirTime();
+			if(interfererStartingTime <= interferedEndTime){
+				//overlap! => interference
+				interferers.add(interferer);
+				i++;
+			}
+			else{
+				//overlapping!
+				interferring = false;
+			}
+		}
+		
+		Collections.sort(interferers);
+		
+		return interferers;
+	}
+
+	private boolean checkLoRaCollision(Packet interfered, Packet interferer) {
 		
 		
 		if(interfered.getChannel() == interferer.getChannel() &&
