@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import it.polito.mdg.lorawan.simulator.model.Config;
-import it.polito.mdg.lorawan.simulator.model.Results;
+import it.polito.mdg.lorawan.simulator.model.ResultInformation;
+import it.polito.mdg.lorawan.simulator.model.SimulationResult;
 import it.polito.mdg.lorawan.simulator.modules.logical.Packet;
 import it.polito.mdg.lorawan.simulator.modules.physical.EndDevice;
 import it.polito.mdg.lorawan.simulator.modules.physical.Gateway;
@@ -17,6 +18,7 @@ import it.polito.mdg.lorawan.simulator.util.ApplicationsProfiler;
 import it.polito.mdg.lorawan.simulator.util.Configurator;
 import it.polito.mdg.lorawan.simulator.util.EndDeviceDeployer;
 import it.polito.mdg.lorawan.simulator.util.EndDeviceScheduler;
+import it.polito.mdg.lorawan.simulator.util.ResultInformationCrawler;
 import it.polito.mdg.lorawan.simulator.util.ResultsWriter;
 
 public class Simulator {
@@ -130,39 +132,68 @@ public class Simulator {
 		//collect only the decoded packets among the received
 		List<Packet> decodedPackets = gw.decodePackets(receivedPackets);
 		
-		//TODO: collect the results! :D
-		int totSentPackets = sentPackets.size();
-		int totReceivedPackets = receivedPackets.size();
-		int receivedRatio = (int)((((double)totReceivedPackets)/((double)totSentPackets))*100);
-		int totDecodedPackets = decodedPackets.size();
-		int decodedRatio = (int)((((double)totDecodedPackets)/((double)totReceivedPackets))*100);
-		int dataExtractionRatio = (int)((((double)totDecodedPackets)/((double)totSentPackets))*100);
-		
+		//collect the results! :D
 		Instant simulationEnd = Instant.now();
-		Duration gap = Duration.between(simulationStart, simulationEnd); 
+		Duration simulationTime = Duration.between(simulationStart, simulationEnd); 
 		
+		SimulationResult simulationResult = new SimulationResult();
+		simulationResult.setConfiguration(config);
+		simulationResult.setEffectiveDeployedEndDevices(effectiveEndDevicesNumber);
+		simulationResult.setSimulationTime(simulationTime);
+			
+		ResultInformation overallResult = new ResultInformation();
+		overallResult.setResultSet("overall");
+		overallResult.setSentPackets(sentPackets.size());
+		overallResult.setReceivedPackets(receivedPackets.size());
+		overallResult.setDecodedPackets(decodedPackets.size());
 		
+		//print to the user the overall results
 		System.out.println("======================");
-		System.out.println("SIM: simulation completed in " + gap.toString());
-		System.out.println("SIM: number of deployed end devices: "+effectiveEndDevicesNumber);
-		System.out.println("SIM: number of sent packets: "+totSentPackets);
-		System.out.println("SIM: number of received packets: "+totReceivedPackets);		
-		System.out.println("SIM: received ratio: "+receivedRatio+"%");
-		System.out.println("SIM: number of decoded packets: "+totDecodedPackets);		
-		System.out.println("SIM: decoded ratio: "+decodedRatio+"%");
-		System.out.println("SIM: data extraction ratio (DER): "+dataExtractionRatio+"%");
+		System.out.println("SIM: simulation completed in " + simulationResult.getSimulationTime().toString());
+		System.out.println("SIM: number of deployed end devices: "+ effectiveEndDevicesNumber);
+		System.out.println("SIM: number of sent packets: "+ overallResult.getSentPackets());
+		System.out.println("SIM: number of received packets: "+ overallResult.getReceivedPackets());		
+		System.out.println("SIM: received ratio: "+ (int)(overallResult.getReceivedRatio()) +"%");
+		System.out.println("SIM: number of decoded packets: "+ overallResult.getDecodedPackets());		
+		System.out.println("SIM: decoded ratio: "+ (int)(overallResult.getDecodedRatio()) +"%");
+		System.out.println("SIM: data extraction ratio (DER): "+ (int)(overallResult.getDataExtractionRatio()) +"%");
 		System.out.println("SIM: check out results file for deeper analysis!");
 		System.out.println("======================");
 		
+		System.out.println("======================");
+		System.out.println("SIM: collecting complete results...");
+		System.out.println("======================");
 		
-//		//write the results into the results file
-//		Results results = new Results();
-//		try {
-//			ResultsWriter.writeResults(results, resultsFileName);
-//		} catch (IOException e) {
-//			System.err.println("Impossible to write the results in the designated file because: "+e.getMessage());
-//			return;
-//		}
+		//collect all the other results
+		List<ResultInformation> results = ResultInformationCrawler
+				.crawlResutlInformation(
+						sentPackets,
+						receivedPackets,
+						decodedPackets,
+						config.getApplications(),
+						config.getDataRates(),
+						config.getChannelNumber());
+		
+		results.add(overallResult);
+		simulationResult.setResults(results);
+		
+		System.out.println("======================");
+		System.out.println("SIM: results collection completed!");
+		System.out.println("SIM: writing results in results file...");
+		System.out.println("======================");
+		
+		//write the results into the results file
+		try {
+			ResultsWriter.writeResults(simulationResult, resultsFileName);
+		} catch (IOException e) {
+			System.err.println("Impossible to write the results in the designated file because: "+e.getMessage());
+			return;
+		}
+		
+		System.out.println("======================");
+		System.out.println("SIM: results have been written!");
+		System.out.println("SIM: bye bye! :D");
+		System.out.println("======================");
 		
 		return;
 		
