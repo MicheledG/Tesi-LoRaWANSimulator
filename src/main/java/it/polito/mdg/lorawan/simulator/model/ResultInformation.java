@@ -1,14 +1,25 @@
 package it.polito.mdg.lorawan.simulator.model;
 
-public class ResultInformation {
+import java.util.HashMap;
+import java.util.Map;
+
+import it.polito.mdg.lorawan.simulator.modules.logical.Application;
+import it.polito.mdg.lorawan.simulator.modules.logical.DataRate;
+
+public class ResultInformation implements Comparable<ResultInformation>{
+	
+	private static final Map<Class<? extends Object>, Integer> resultSetClassMapping;
+	static{
+		resultSetClassMapping = new HashMap<>();
+		resultSetClassMapping.put(Application.class, 0);
+		resultSetClassMapping.put(DataRate.class, 1);
+		resultSetClassMapping.put(String.class, 2);
+	}
 	
 	private Object resultSet;
 	private int sentPackets;
 	private int receivedPackets;
-//	private double receivedRatio;
 	private int decodedPackets;
-//	private double decodedRatio;
-//	private double dataExtractionRatio;
 	public ResultInformation(){};
 	
 	public Object getResultSet() {
@@ -43,5 +54,42 @@ public class ResultInformation {
 	}
 	public double getDataExtractionRatio() {
 		return (((double)decodedPackets)/((double)sentPackets))*100;
+	}
+
+	@Override
+	public int compareTo(ResultInformation o) {
+		
+		
+		int comparisonResult = 0;
+		
+		Integer thisResultSetClassIndex = resultSetClassMapping.get(this.resultSet.getClass());
+		Integer thatResultSetClassIndex = resultSetClassMapping.get(o.getResultSet().getClass());
+			
+		if(!thisResultSetClassIndex.equals(thatResultSetClassIndex)){
+			comparisonResult = thisResultSetClassIndex.compareTo(thatResultSetClassIndex);
+		}
+		else{
+			switch (thisResultSetClassIndex) {
+			case 0:
+				Application thisResultSetApplication = ((Application) this.resultSet);
+				Application thatResultSetApplication = ((Application) o.getResultSet());
+				comparisonResult = thisResultSetApplication.compareTo(thatResultSetApplication);
+				break;
+			case 1:
+				DataRate thisResultSetDataRate = ((DataRate) this.resultSet);
+				DataRate thatResultSetDataRate = ((DataRate) o.getResultSet());
+				comparisonResult = thisResultSetDataRate.compareTo(thatResultSetDataRate);
+				break;
+			case 2:
+				String thisResultSetString = ((String) this.resultSet);
+				String thatResultSetString = ((String) o.getResultSet());
+				comparisonResult = thisResultSetString.compareTo(thatResultSetString);
+				break;
+			default:
+				break;
+			}
+		}
+		
+		return comparisonResult;
 	}
 }

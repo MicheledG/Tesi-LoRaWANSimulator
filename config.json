@@ -7,7 +7,7 @@
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,
-	"channelNumber": 3,
+	"channelNumber": 8,
 	"decodingPath": 8,
 	"dataRates": [
 		{

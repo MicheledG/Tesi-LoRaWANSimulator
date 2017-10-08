@@ -2,7 +2,7 @@ package it.polito.mdg.lorawan.simulator.modules.logical;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Application {
+public class Application implements Comparable<Application> {
 
 	private int appId;
 	private double deviceDensity; //number of end device per km^2
@@ -94,5 +94,13 @@ public class Application {
 	public void setCRC(int CRC) {
 		this.CRC = CRC;
 	}
+
+	@Override
+	public int compareTo(Application o) {
+		Integer thisAppId = this.appId;
+		Integer thatAppId = o.getAppId();		
+		return thisAppId.compareTo(thatAppId);
+	}
+	
 	
 }

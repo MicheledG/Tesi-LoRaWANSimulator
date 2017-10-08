@@ -2,6 +2,7 @@ package it.polito.mdg.lorawan.simulator.util;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -14,6 +15,10 @@ public class ResultsWriter {
 	
 	public static void writeResults(SimulationResult results, String resultsFileName) throws IOException{
 		
+		//sort the results
+		Collections.sort(results.getResults());
+		
+		//print to the file
 		if(resultsFileName == null){
 			resultsFileName = DEFAULT_RESULTS_FILE_NAME;
 		}
