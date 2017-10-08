@@ -1,0 +1,230 @@
+{
+  "configuration" : {
+    "time" : 10080,
+    "range" : 5.0,
+    "gwHeight" : 25.0,
+    "edHeight" : 2.5,
+    "frequency" : 868.0,
+    "txPower" : 14.0,
+    "dutyCycle" : 0.01,
+    "channelNumber" : 8,
+    "dataRates" : [ {
+      "sf" : 7,
+      "bw" : 125000,
+      "minSensitivity" : -124.0
+    }, {
+      "sf" : 8,
+      "bw" : 125000,
+      "minSensitivity" : -129.0
+    }, {
+      "sf" : 9,
+      "bw" : 125000,
+      "minSensitivity" : -130.0
+    }, {
+      "sf" : 10,
+      "bw" : 125000,
+      "minSensitivity" : -133.0
+    }, {
+      "sf" : 11,
+      "bw" : 125000,
+      "minSensitivity" : -135.0
+    }, {
+      "sf" : 12,
+      "bw" : 125000,
+      "minSensitivity" : -137.0
+    } ],
+    "decodingPath" : 8,
+    "applications" : [ {
+      "appId" : 1,
+      "deviceDensity" : 1000.0,
+      "payloadSize" : 9,
+      "appInterval" : 60.0,
+      "packetInterval" : 60.0,
+      "npp" : 8,
+      "crc" : 1,
+      "ih" : 1,
+      "cr" : 1,
+      "CR" : 1,
+      "IH" : 1,
+      "Npp" : 8,
+      "CRC" : 1
+    } ],
+    "endDeviceNumber" : 1000,
+    "collisionAlgorithm" : 1
+  },
+  "effectiveDeployedEndDevices" : 1000,
+  "simulationTime" : {
+    "seconds" : 11,
+    "zero" : false,
+    "negative" : false,
+    "nano" : 735000000,
+    "units" : [ "SECONDS", "NANOS" ]
+  },
+  "results" : [ {
+    "resultSet" : {
+      "appId" : 1,
+      "deviceDensity" : 1000.0,
+      "payloadSize" : 9,
+      "appInterval" : 60.0,
+      "packetInterval" : 60.0,
+      "npp" : 8,
+      "crc" : 1,
+      "ih" : 1,
+      "cr" : 1,
+      "CR" : 1,
+      "IH" : 1,
+      "Npp" : 8,
+      "CRC" : 1
+    },
+    "sentPackets" : 10080000,
+    "receivedPackets" : 9018179,
+    "decodedPackets" : 8946944,
+    "dataExtractionRatio" : 88.75936507936508,
+    "decodedRatio" : 99.21009551928388,
+    "receivedRatio" : 89.46606150793652
+  }, {
+    "resultSet" : {
+      "sf" : 7,
+      "bw" : 125000,
+      "minSensitivity" : -124.0
+    },
+    "sentPackets" : 4667040,
+    "receivedPackets" : 4163040,
+    "decodedPackets" : 4126210,
+    "dataExtractionRatio" : 88.41171277726353,
+    "decodedRatio" : 99.11530996579422,
+    "receivedRatio" : 89.20086393088553
+  }, {
+    "resultSet" : {
+      "sf" : 8,
+      "bw" : 125000,
+      "minSensitivity" : -129.0
+    },
+    "sentPackets" : 1663200,
+    "receivedPackets" : 1530032,
+    "decodedPackets" : 1517936,
+    "dataExtractionRatio" : 91.26599326599326,
+    "decodedRatio" : 99.20942829953884,
+    "receivedRatio" : 91.993265993266
+  }, {
+    "resultSet" : {
+      "sf" : 9,
+      "bw" : 125000,
+      "minSensitivity" : -130.0
+    },
+    "sentPackets" : 443520,
+    "receivedPackets" : 443520,
+    "decodedPackets" : 438836,
+    "dataExtractionRatio" : 98.94390331890331,
+    "decodedRatio" : 98.94390331890331,
+    "receivedRatio" : 100.0
+  }, {
+    "resultSet" : {
+      "sf" : 10,
+      "bw" : 125000,
+      "minSensitivity" : -133.0
+    },
+    "sentPackets" : 1401120,
+    "receivedPackets" : 1228534,
+    "decodedPackets" : 1219320,
+    "dataExtractionRatio" : 87.02466598150052,
+    "decodedRatio" : 99.25000040698914,
+    "receivedRatio" : 87.68228274523238
+  }, {
+    "resultSet" : {
+      "sf" : 11,
+      "bw" : 125000,
+      "minSensitivity" : -135.0
+    },
+    "sentPackets" : 1058400,
+    "receivedPackets" : 957525,
+    "decodedPackets" : 951720,
+    "dataExtractionRatio" : 89.92063492063492,
+    "decodedRatio" : 99.39374951045664,
+    "receivedRatio" : 90.46910430839003
+  }, {
+    "resultSet" : {
+      "sf" : 12,
+      "bw" : 125000,
+      "minSensitivity" : -137.0
+    },
+    "sentPackets" : 846720,
+    "receivedPackets" : 695528,
+    "decodedPackets" : 692922,
+    "dataExtractionRatio" : 81.8360260770975,
+    "decodedRatio" : 99.62532061973062,
+    "receivedRatio" : 82.14380196523054
+  }, {
+    "resultSet" : "channel 0",
+    "sentPackets" : 1189440,
+    "receivedPackets" : 1009438,
+    "decodedPackets" : 1002904,
+    "dataExtractionRatio" : 84.31732580037665,
+    "decodedRatio" : 99.35270913121956,
+    "receivedRatio" : 84.86665994081248
+  }, {
+    "resultSet" : "channel 1",
+    "sentPackets" : 1280160,
+    "receivedPackets" : 1143632,
+    "decodedPackets" : 1134754,
+    "dataExtractionRatio" : 88.64157605299337,
+    "decodedRatio" : 99.22370133049793,
+    "receivedRatio" : 89.33508311461067
+  }, {
+    "resultSet" : "channel 2",
+    "sentPackets" : 1219680,
+    "receivedPackets" : 1083116,
+    "decodedPackets" : 1074462,
+    "dataExtractionRatio" : 88.09376229830775,
+    "decodedRatio" : 99.2010089408706,
+    "receivedRatio" : 88.80329266692904
+  }, {
+    "resultSet" : "channel 3",
+    "sentPackets" : 1219680,
+    "receivedPackets" : 1121332,
+    "decodedPackets" : 1113363,
+    "dataExtractionRatio" : 91.2832054309327,
+    "decodedRatio" : 99.28932733570433,
+    "receivedRatio" : 91.93657352748262
+  }, {
+    "resultSet" : "channel 4",
+    "sentPackets" : 1350720,
+    "receivedPackets" : 1181680,
+    "decodedPackets" : 1171273,
+    "dataExtractionRatio" : 86.71471511490168,
+    "decodedRatio" : 99.11930471870556,
+    "receivedRatio" : 87.48519308220801
+  }, {
+    "resultSet" : "channel 5",
+    "sentPackets" : 1330560,
+    "receivedPackets" : 1198232,
+    "decodedPackets" : 1187633,
+    "dataExtractionRatio" : 89.2581319143819,
+    "decodedRatio" : 99.11544675822378,
+    "receivedRatio" : 90.0547138047138
+  }, {
+    "resultSet" : "channel 6",
+    "sentPackets" : 1229760,
+    "receivedPackets" : 1107568,
+    "decodedPackets" : 1097894,
+    "dataExtractionRatio" : 89.27709471766849,
+    "decodedRatio" : 99.12655475781172,
+    "receivedRatio" : 90.06375227686702
+  }, {
+    "resultSet" : "channel 7",
+    "sentPackets" : 1260000,
+    "receivedPackets" : 1173181,
+    "decodedPackets" : 1164661,
+    "dataExtractionRatio" : 92.4334126984127,
+    "decodedRatio" : 99.27376935016848,
+    "receivedRatio" : 93.10960317460317
+  }, {
+    "resultSet" : "overall",
+    "sentPackets" : 10080000,
+    "receivedPackets" : 9018179,
+    "decodedPackets" : 8946944,
+    "dataExtractionRatio" : 88.75936507936508,
+    "decodedRatio" : 99.21009551928388,
+    "receivedRatio" : 89.46606150793652
+  } ]
+}

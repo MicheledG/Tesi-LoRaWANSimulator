@@ -7,8 +7,9 @@
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,
-	"channelNumber": 8,
+	"channelNumber": 1,
 	"decodingPath": 8,
+	"collisionAlgorithm": 0,
 	"dataRates": [
 		{
 			"sf": 12,

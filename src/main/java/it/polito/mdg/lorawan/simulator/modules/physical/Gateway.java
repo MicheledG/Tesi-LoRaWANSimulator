@@ -32,7 +32,7 @@ public class Gateway {
 		}
 	}
 
-	public List<Packet> receivePackets(List<Packet> sentPackets){
+	public List<Packet> receivePackets(List<Packet> sentPackets, int collisionAlgorithm){
 		
 		List<Packet> receivedPackets = new ArrayList<>();
 		Collections.sort(sentPackets);		
@@ -53,7 +53,17 @@ public class Gateway {
 			List<Packet> interferringPackets = this.detectInterferringPackets(interfered, i, sentPackets);			
 			boolean collision = false;
 			for(Packet interferer: interferringPackets){
-				collision = this.checkLoRaCollision(interfered, interferer);
+				
+				switch(collisionAlgorithm){
+					case 0: //LoRa
+						collision = this.checkLoRaCollision(interfered, interferer);
+						break;
+					case 1:
+					default: //Aloha
+						collision = this.checkAlohaCollision(interfered, interferer);
+						break;
+				}			
+				
 				if(collision){
 					//a collision has been detected with the interfered packet
 					break;
@@ -160,7 +170,7 @@ public class Gateway {
 			double interfererStartingTime = interferer.getStartingTime();
 			double interfererEndTime = interferer.getEndTime();
 			
-			// Apply collision detection algorithm
+			// Apply LoRa collision detection algorithm
 			if(interfered.getRssi() >= interferer.getRssi()){
 				if(interfererStartingTime <= interferedStartingTime &&
 						interferedStartingTime <= interfererEndTime){
@@ -190,6 +200,44 @@ public class Gateway {
 		}
 	}
 
+	private boolean checkAlohaCollision(Packet interfered, Packet interferer) {
+				
+		if(interfered.getChannel() == interferer.getChannel() &&
+				interfered.getDr().equals(interferer.getDr())){
+			
+			//the interfered and the interfere are on the same "virtual channel" 
+			//(same physical channel and same data rate)
+			
+			//extract useful parameters
+			double interferedStartingTime = interfered.getStartingTime();
+			double interferedEndTime = interfered.getEndTime();
+			
+			double interfererStartingTime = interferer.getStartingTime();
+			double interfererEndTime = interferer.getEndTime();
+			
+			// Apply Aloha collision detection algorithm -> if there is overlapping => collision, always!
+			if(interfererStartingTime <= interferedStartingTime &&
+					interferedStartingTime <= interfererEndTime){
+				//collision
+				return true;
+			}
+			else if(interfererStartingTime <= interferedEndTime &&
+					interferedEndTime<= interfererEndTime){
+				//collision
+				return true;
+			}
+			else{
+				//no collision has been detected
+				return false;
+			}
+			
+		}
+		else{
+			//no collision is possible because the two packets are on different virtual channels
+			return false;
+		}
+	}
+	
 	public List<Packet> decodePackets(List<Packet> receivedPackets){
 		
 		List<Packet> decodedPackets = new ArrayList<>();

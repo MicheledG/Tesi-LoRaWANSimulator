@@ -127,7 +127,7 @@ public class Simulator {
 		Gateway gw = new Gateway(config.getDecodingPath());
 		
 		//let the sent packets reach the gateway
-		List<Packet> receivedPackets = gw.receivePackets(sentPackets);
+		List<Packet> receivedPackets = gw.receivePackets(sentPackets, config.getCollisionAlgorithm());
 		
 		//collect only the decoded packets among the received
 		List<Packet> decodedPackets = gw.decodePackets(receivedPackets);

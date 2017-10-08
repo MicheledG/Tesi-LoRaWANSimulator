@@ -19,6 +19,7 @@ public class Config {
 	private int decodingPath; //the number of parallel decoding path of the gateway
 	private List<Application> applications; //list of all the applications
 	private int endDeviceNumber; //the number of end device to deploy in the area
+	private int collisionAlgorithm; //set the collision algorithm: 0 = LoRa; 1 or others = Aloha
 	
 	public int getTime() {
 		return time;
@@ -92,11 +93,11 @@ public class Config {
 	public void setApplications(List<Application> applications) {
 		this.applications = applications;
 	}
-	
-	public void printConfiguration(){
-		//TODO
-		
-		
+	public int getCollisionAlgorithm() {
+		return collisionAlgorithm;
+	}
+	public void setCollisionAlgorithm(int collisionAlgorithm) {
+		this.collisionAlgorithm = collisionAlgorithm;
 	}
 	
 }
