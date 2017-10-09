@@ -39,7 +39,15 @@ public class StatisticsCalculator {
         for(double value :values){
         	temp += Math.pow((value-average), 2);
         }
-        double variance = temp/(size-1);          
+        
+        double variance;
+        if(size == 1){
+        	variance = 0;
+        }
+        else{
+        	variance = temp/((double)(size-1));
+        }
+                  
         return variance;
     }
 
