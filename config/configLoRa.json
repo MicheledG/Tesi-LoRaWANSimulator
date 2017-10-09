@@ -1,13 +1,13 @@
 {
-	"time":10080,
+	"time":34000,
 	"range": 5,
 	"gwHeight": 25,
 	"edHeight": 2.5,
-	"endDeviceNumber": 1000,
+	"endDeviceNumber": 28,
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,
-	"channelNumber": 3,
+	"channelNumber": 1,
 	"decodingPath": 8,
 	"collisionAlgorithm": 0,
 	"dataRates": [
@@ -51,7 +51,7 @@
 			"IH": 1,
 			"Npp": 8,
 			"CRC": 1,
-			"appInterval": 60  
+			"appInterval": 30
 		}
 	]
 }
