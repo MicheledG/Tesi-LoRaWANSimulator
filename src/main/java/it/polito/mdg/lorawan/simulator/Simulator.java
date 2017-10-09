@@ -36,7 +36,7 @@ public class Simulator {
 			configurationFileName = args[0];
 		}
 		if(args.length > 1){
-			configurationFileName = args[1];
+			resultsFileName = args[1];
 		}
 		
 		//configure the simulator

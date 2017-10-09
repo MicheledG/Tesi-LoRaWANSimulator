@@ -26,22 +26,22 @@ public class ResultsWriter {
 		
 		//create the results path
 		String resultsPath = DEFAULT_RESULTS_FILE_FOLDER + "/";
-		
-		//print to the file
-		if(resultsFileName == null){
-			resultsPath += DEFAULT_RESULTS_FILE_NAME_PREFIX
-					+ "-"
-					+ DEFAULT_TIMESTAMP_FORMAT.format(new Date())
-					+ DEFAULT_RESULTS_FILE_NAME_SUFFIX;
+		if(resultsFileName != null){
+			resultsPath += resultsFileName;	
 		}
 		else{
-			resultsPath += resultsFileName;
+			resultsPath += DEFAULT_RESULTS_FILE_NAME_PREFIX;
 		}
+		resultsPath += "-" 
+		+ DEFAULT_TIMESTAMP_FORMAT.format(new Date()) 
+		+ DEFAULT_RESULTS_FILE_NAME_SUFFIX;
+		
 		
 		//create the file writer where to push the results
 		FileWriter jsonFileWriter = new FileWriter(resultsPath);	
 		//create ObjectWriter to serialize the results object into the json file
 		ObjectWriter objectWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();				
+		//print to the file
 		objectWriter.writeValue(jsonFileWriter , results);		
 		
 	}
