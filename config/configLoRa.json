@@ -1,6 +1,6 @@
 {
-	"time":2,
-	"range": 5,
+	"time":4,
+	"range": 1,
 	"gwHeight": 25,
 	"edHeight": 2.5,
 	"endDeviceNumber": 3500,
@@ -11,31 +11,6 @@
 	"decodingPath": 8,
 	"collisionAlgorithm": 0,
 	"dataRates": [
-		{
-			"sf": 12,
-			"bw": 125000,
-			"minSensitivity": -137
-		},
-		{
-			"sf": 11,
-			"bw": 125000,
-			"minSensitivity": -135
-		},
-		{
-			"sf": 10,
-			"bw": 125000,
-			"minSensitivity": -133
-		},
-		{
-			"sf": 9,
-			"bw": 125000,
-			"minSensitivity": -130
-		},
-		{
-			"sf": 8,
-			"bw": 125000,
-			"minSensitivity": -129
-		},
 		{
 			"sf": 7,
 			"bw": 125000,
@@ -51,7 +26,7 @@
 			"IH": 1,
 			"Npp": 8,
 			"CRC": 1,
-			"appInterval": 30
+			"appInterval": 60
 		}
 	]
 }
