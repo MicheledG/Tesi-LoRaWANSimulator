@@ -1,9 +1,9 @@
 {
-	"time":34000,
+	"time":2,
 	"range": 1,
 	"gwHeight": 25,
 	"edHeight": 2.5,
-	"endDeviceNumber": 28,
+	"endDeviceNumber": 1000,
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,

@@ -3,7 +3,7 @@ package it.polito.mdg.lorawan.simulator.model;
 import java.time.Duration;
 import java.util.List;
 
-public class SimulationResult {
+public class SimulationResult{
 
 	private Config configuration;
 	private int effectiveDeployedEndDevices;
@@ -32,6 +32,5 @@ public class SimulationResult {
 	}
 	public void setResults(List<ResultInformation> results) {
 		this.results = results;
-	}	
-	
+	}
 }

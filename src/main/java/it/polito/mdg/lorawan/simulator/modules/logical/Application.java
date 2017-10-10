@@ -7,13 +7,9 @@ public class Application implements Comparable<Application> {
 	private int appId;
 	private double deviceDensity; //number of end device per km^2
 	private int payloadSize; //typical application payload size for the specific application
-	@JsonProperty("CR")
 	private int CR; //specify the Code Rate to use in the packet encoding/decoding (1 -> 4)
-	@JsonProperty("IH")
 	private int IH; //specify to use the IMPLICIT HEADER mode (IH=1) or not (IH=0)
-	@JsonProperty("Npp")
 	private int Npp; //specify the number of symbols to use in the programmable portion of the preamble
-	@JsonProperty("CRC")
 	private int CRC; //specify if the CRC of the PHYPayload is present (CRC=1) or not (CRC=0) in the packet
 	private double appInterval; //specify the interval (in s) between to message
 	
@@ -34,9 +30,19 @@ public class Application implements Comparable<Application> {
 	public int getAppId() {
 		return appId;
 	}
+	
+	public void setAppId(int appId) {
+		this.appId = appId;
+	}
+	
 	public double getDeviceDensity() {
 		return deviceDensity;
 	}
+	
+	public void setDeviceDensity(double deviceDensity) {
+		this.deviceDensity = deviceDensity;
+	}
+	
 	public int getPayloadSize() {
 		return payloadSize;
 	}
@@ -46,21 +52,45 @@ public class Application implements Comparable<Application> {
 	public double getPacketInterval() {
 		return appInterval;
 	}
-
+	
+	@JsonProperty("CR")
 	public int getCR() {
 		return CR;
 	}
-
+	
+	@JsonProperty("CR")
+	public void setCR(int CR) {
+		this.CR = CR;
+	}
+	
+	@JsonProperty("IH")
 	public int getIH() {
 		return IH;
 	}
-
+	
+	@JsonProperty("IH")
+	public void setIH(int IH) {
+		this.IH = IH;
+	}
+	
+	@JsonProperty("Npp")
 	public int getNpp() {
 		return Npp;
 	}
-
+	
+	@JsonProperty("Npp")
+	public void setNpp(int Npp) {
+		this.Npp = Npp;
+	}
+	
+	@JsonProperty("CRC")
 	public int getCRC() {
 		return CRC;
+	}
+	
+	@JsonProperty("CRC")
+	public void setCRC(int CRC) {
+		this.CRC = CRC;
 	}
 
 	public double getAppInterval() {
@@ -69,30 +99,6 @@ public class Application implements Comparable<Application> {
 
 	public void setAppInterval(double appInterval) {
 		this.appInterval = appInterval;
-	}
-
-	public void setAppId(int appId) {
-		this.appId = appId;
-	}
-
-	public void setDeviceDensity(double deviceDensity) {
-		this.deviceDensity = deviceDensity;
-	}
-
-	public void setCR(int CR) {
-		this.CR = CR;
-	}
-
-	public void setIH(int IH) {
-		this.IH = IH;
-	}
-
-	public void setNpp(int Npp) {
-		this.Npp = Npp;
-	}
-
-	public void setCRC(int CRC) {
-		this.CRC = CRC;
 	}
 
 	@Override

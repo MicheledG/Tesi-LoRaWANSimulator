@@ -21,6 +21,50 @@ public class Config {
 	private int endDeviceNumber; //the number of end device to deploy in the area
 	private int collisionAlgorithm; //set the collision algorithm: 0 = LoRa; 1 or others = Aloha
 	
+	
+	
+	
+	public Config() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Config(int time, double range, double gwHeight, double edHeight, double frequency, double txPower,
+			double dutyCycle, int channelNumber, List<DataRate> dataRates, int decodingPath,
+			List<Application> applications, int endDeviceNumber, int collisionAlgorithm) {
+		super();
+		this.time = time;
+		this.range = range;
+		this.gwHeight = gwHeight;
+		this.edHeight = edHeight;
+		this.frequency = frequency;
+		this.txPower = txPower;
+		this.dutyCycle = dutyCycle;
+		this.channelNumber = channelNumber;
+		this.dataRates = dataRates;
+		this.decodingPath = decodingPath;
+		this.applications = applications;
+		this.endDeviceNumber = endDeviceNumber;
+		this.collisionAlgorithm = collisionAlgorithm;
+	}
+	
+	public Config(Config config) {
+		super();
+		this.time = config.getTime();
+		this.range = config.getRange();
+		this.gwHeight = config.getGwHeight();
+		this.edHeight = config.getEdHeight();
+		this.frequency = config.getFrequency();
+		this.txPower = config.getTxPower();
+		this.dutyCycle = config.getDutyCycle();
+		this.channelNumber = config.getChannelNumber();
+		this.dataRates = config.getDataRates();
+		this.decodingPath = config.getDecodingPath();
+		this.applications = config.getApplications();
+		this.endDeviceNumber = config.getEndDeviceNumber();
+		this.collisionAlgorithm = config.getCollisionAlgorithm();
+	}
+	
 	public int getTime() {
 		return time;
 	}

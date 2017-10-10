@@ -3,7 +3,7 @@
 	"range": 5,
 	"gwHeight": 25,
 	"edHeight": 2.5,
-	"endDeviceNumber": 3500,
+	"endDeviceNumber": 28,
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,
@@ -15,31 +15,6 @@
 			"sf": 12,
 			"bw": 125000,
 			"minSensitivity": -137
-		},
-		{
-			"sf": 11,
-			"bw": 125000,
-			"minSensitivity": -135
-		},
-		{
-			"sf": 10,
-			"bw": 125000,
-			"minSensitivity": -133
-		},
-		{
-			"sf": 9,
-			"bw": 125000,
-			"minSensitivity": -130
-		},
-		{
-			"sf": 8,
-			"bw": 125000,
-			"minSensitivity": -129
-		},
-		{
-			"sf": 7,
-			"bw": 125000,
-			"minSensitivity": -124
 		}		
 	],
 	"applications": [	

@@ -4,7 +4,7 @@ import java.util.List;
 
 import it.polito.mdg.lorawan.simulator.model.statistics.StatisticsResult;
 
-public class SimulationSummary {
+public class SimulationSummary implements Comparable<SimulationSummary>{
 
 	private Config configuration;
 	private List<StatisticsResult> statisticsResults;
@@ -19,6 +19,15 @@ public class SimulationSummary {
 	}
 	public void setStatisticsResults(List<StatisticsResult> statisticsResults) {
 		this.statisticsResults = statisticsResults;
+	}
+	
+	@Override
+	public int compareTo(SimulationSummary o) {
+		
+		Integer thisEffectiveDeployedEndDevice = this.getConfiguration().getEndDeviceNumber();
+		Integer thatEffectiveDeployedEndDevice = o.getConfiguration().getEndDeviceNumber();
+		
+		return thisEffectiveDeployedEndDevice.compareTo(thatEffectiveDeployedEndDevice);
 	}
 	
 }
