@@ -2,18 +2,26 @@ package it.polito.mdg.lorawan.simulator.model.statistics;
 
 public class StatisticsResult {
 
+	private Object resultSet;
 	private String parameter;
 	private int trials;
 	private double average;
 	private double variance;
-	private double stdDeviation;
-	public StatisticsResult(String parameter, int trials, double average, double variance, double stdDeviation) {
+	private double stdDeviation;	
+	public StatisticsResult(Object resultSet, String parameter, int trials, double average, double variance, double stdDeviation) {
 		super();
+		this.resultSet = resultSet;
 		this.parameter = parameter;
 		this.trials = trials;
 		this.average = average;
 		this.variance = variance;
 		this.stdDeviation = stdDeviation;
+	}
+	public Object getResultSet() {
+		return resultSet;
+	}
+	public void setResultSet(Object resultSet) {
+		this.resultSet = resultSet;
 	}
 	public StatisticsResult() {
 		super();
