@@ -22,7 +22,7 @@ public class SummaryWriter {
 	private final static String DEFAULT_SUMMARY_FILE_NAME_SUFFIX =".json";	
 	private final static String DEFAULT_RAW_SUMMARY_FILE_NAME_PREFIX ="raw";
 	private final static String DEFAULT_RAW_SUMMARY_FILE_NAME_SUFFIX =".txt";
-	private final static DateFormat DEFAULT_TIMESTAMP_FORMAT = new SimpleDateFormat("yyyyMMdd-HHmmss");
+	private final static DateFormat DEFAULT_TIMESTAMP_FORMAT = new SimpleDateFormat("yyyyMMdd-HHmmssS");
 	
 	public static void writeResults(List<SimulationSummary> simulationSummaries, String summaryFileName) throws IOException{
 		

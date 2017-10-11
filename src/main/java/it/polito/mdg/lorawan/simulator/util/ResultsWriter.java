@@ -17,7 +17,7 @@ public class ResultsWriter {
 	private final static String DEFAULT_RESULTS_FILE_FOLDER ="results";
 	private final static String DEFAULT_RESULTS_FILE_NAME_PREFIX ="results";
 	private final static String DEFAULT_RESULTS_FILE_NAME_SUFFIX =".json";	
-	private final static DateFormat DEFAULT_TIMESTAMP_FORMAT = new SimpleDateFormat("yyyyMMdd-HHmmss");
+	private final static DateFormat DEFAULT_TIMESTAMP_FORMAT = new SimpleDateFormat("yyyyMMdd-HHmmssS");
 	
 	public static void writeResults(SimulationResult results, String resultsFileName) throws IOException{
 		

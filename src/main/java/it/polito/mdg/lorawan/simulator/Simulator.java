@@ -55,15 +55,16 @@ public class Simulator {
 			printSingleSimulationResults = false;
 		}
 		if(args.length > 4){
-			minDevices = Integer.parseInt(args[4]);
-			step = DEFAULT_STEP;
+			printSingleSimulationResults = Boolean.parseBoolean(args[4]);
 		}
 		if(args.length > 5){
-			step = Integer.parseInt(args[5]);
+			minDevices = Integer.parseInt(args[5]);
+			step = DEFAULT_STEP;
 		}
 		if(args.length > 6){
-			printSingleSimulationResults = Boolean.parseBoolean(args[6]);
+			step = Integer.parseInt(args[6]);
 		}
+		
 		
 		
 		//configure the simulator
