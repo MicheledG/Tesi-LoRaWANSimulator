@@ -1,6 +1,7 @@
 package it.polito.mdg.lorawan.simulator.modules.physical;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import it.polito.mdg.lorawan.simulator.modules.logical.Application;
@@ -21,6 +22,7 @@ public class EndDevice {
 	private double packetInterval;
 	private List<Packet> sentPackets;
 	private int messageCount;
+	private boolean periodicEndDevice;
 	
 	public EndDevice(int devId, Application application, int channel, DataRate dr, double dc, double distance, double rssi, double shiftRate) {
 		
@@ -42,7 +44,7 @@ public class EndDevice {
 		this.messageCount = 0;
 	}
 	
-	public void sendNextPacket(){
+	public void sendNextPeriodicPacket(){
 		
 		//compute the starting time of the packet
 		double startingTime = 0.0;
@@ -70,16 +72,64 @@ public class EndDevice {
 				startingTime,
 				this.packetAirTime);
 		
-		//"send the packet" inserting it in the list
+		//"send the packet" => inserting it in the list
 		this.sentPackets.add(packet);
 		
 		
 	};
 	
-	public void sendNextNPacket(int N){	
+	public void sendNextRandomPacket(double randomValue, int simulationTime){
+		
+		//starting time of the packet is a random value contained into the time of the simulation
+		double startingTime = randomValue * (simulationTime * 60); //simulationTime is expressed in minutes				
+		
+		if(!this.sentPackets.isEmpty()){		
+			//there are already sent packets
+			double lastMessageEndTime = this.sentPackets.get(messageCount-1).getStartingTime() + this.getPacketAirTime();
+			if(startingTime <= lastMessageEndTime + this.packetInterval){
+				//the message cannot be sent because duty cycle violation
+				return;
+			}
+		}				
+
+		//update the message count
+		this.messageCount++;
+		
+		Packet packet = new Packet(this.devId,
+				this.application.getAppId(),
+				messageCount, 
+				this.channel,
+				this.dr,
+				this.distance,
+				this.rssi,
+				startingTime,
+				this.packetAirTime);
+		
+		//"send the packet" => inserting it in the list
+		this.sentPackets.add(packet);
+		
+		
+	};
+	
+	public void sendNextNPeriodicPacket(int N){			
 		for(int i = 0; i < N; i++){
-			this.sendNextPacket();
+			this.sendNextPeriodicPacket();
 		}
+	}
+	
+	public void sendNextNRandomPacket(int N, int simulationTime){				
+		double randomValues[] = new double[N];		
+		for(int i = 0; i < N; i++){
+			randomValues[i] = Math.random();
+		}
+		
+		Arrays.sort(randomValues);
+		
+		//there will be sent at most N packets
+		for(int i = 0; i < N; i++){
+			this.sendNextRandomPacket(randomValues[i], simulationTime);
+		}
+		
 	}
 
 	public int getDevId() {
@@ -130,6 +180,14 @@ public class EndDevice {
 		return messageCount;
 	};
 	
+	public boolean isPeriodicEndDevice() {
+		return periodicEndDevice;
+	}
+
+	public void setPeriodicEndDevice(boolean periodicEndDevice) {
+		this.periodicEndDevice = periodicEndDevice;
+	}
+
 	private void computePacketParameters(){
 		
 		//compute airtime of the packet to send according to the datarate and the packet size
@@ -159,7 +217,18 @@ public class EndDevice {
 		
 		//compute the interval between 2 packet choosing between the duty cycle constrained interval and the application interval
 		double dcPacketInterval = this.packetAirTime * (1 - this.dc)/(this.dc);
-		this.packetInterval = Math.max(dcPacketInterval, this.application.getPacketInterval());
+		
+		if(this.application.getMessages() == -1){
+			//periodic messages
+			this.packetInterval = Math.max(dcPacketInterval, this.application.getPacketInterval());
+			this.periodicEndDevice = true;
+		}
+		else{
+			//random messages
+			this.packetInterval = dcPacketInterval;
+			this.periodicEndDevice = false;
+		}
+		
 		
 	}
 	

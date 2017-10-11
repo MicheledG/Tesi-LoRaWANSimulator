@@ -11,12 +11,13 @@ public class Application implements Comparable<Application> {
 	private int IH; //specify to use the IMPLICIT HEADER mode (IH=1) or not (IH=0)
 	private int Npp; //specify the number of symbols to use in the programmable portion of the preamble
 	private int CRC; //specify if the CRC of the PHYPayload is present (CRC=1) or not (CRC=0) in the packet
-	private double appInterval; //specify the interval (in s) between to message
+	private double appInterval; //if no "messages" is specified indicates the the interval (in s) between to messages
+	private int messages = -1; //indicates the number of messages to send in the appInterval
 	
 	public Application(){};
 	
 	public Application(int appId, double deviceDensity, int payloadSize, int CR, int IH, int Npp, int CRC,
-			double appInterval) {
+			double appInterval, int messages) {
 		this.appId = appId;
 		this.deviceDensity = deviceDensity;
 		this.payloadSize = payloadSize;
@@ -25,6 +26,7 @@ public class Application implements Comparable<Application> {
 		this.Npp = Npp;
 		this.CRC = CRC;
 		this.appInterval = appInterval;
+		this.messages = messages;
 	}
 	
 	public int getAppId() {
@@ -99,6 +101,14 @@ public class Application implements Comparable<Application> {
 
 	public void setAppInterval(double appInterval) {
 		this.appInterval = appInterval;
+	}
+
+	public int getMessages() {
+		return messages;
+	}
+
+	public void setMessages(int messages) {
+		this.messages = messages;
 	}
 
 	@Override

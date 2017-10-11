@@ -7,7 +7,7 @@ import it.polito.mdg.lorawan.simulator.modules.physical.EndDevice;
 
 public class EndDeviceScheduler {
 	
-	public static void scheduleEndDevices(Map<Integer, Integer> applicationPackets, List<EndDevice> endDevices){
+	public static void scheduleEndDevices(Map<Integer, Integer> applicationPackets, List<EndDevice> endDevices, int simulationTime){
 		
 		double scheduledEndDeviceRatio;
 		int difference;
@@ -27,7 +27,15 @@ public class EndDeviceScheduler {
 		for (EndDevice endDevice: endDevices) {
 			appId = endDevice.getAppId();
 			packetsToSend = applicationPackets.get(appId);
-			endDevice.sendNextNPacket(packetsToSend);
+			
+			if(endDevice.isPeriodicEndDevice()){
+				endDevice.sendNextNPeriodicPacket(packetsToSend);
+			}
+			else{
+				endDevice.sendNextNRandomPacket(packetsToSend, simulationTime);
+			}
+			
+			
 			//notify the user with the progress
 			scheduledEndDeviceRatio = ((double)(i+1))/((double)(totEndDevices));
 			difference = (int) (scheduledEndDeviceRatio * 100) - scheduledEndDevicePercent;

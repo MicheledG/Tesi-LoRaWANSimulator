@@ -20,6 +20,7 @@ public class ResultInformation implements Comparable<ResultInformation>{
 	private int sentPackets;
 	private int receivedPackets;
 	private int decodedPackets;
+	private int endDevices;
 	public ResultInformation(){};
 	
 	public Object getResultSet() {
@@ -54,6 +55,14 @@ public class ResultInformation implements Comparable<ResultInformation>{
 	}
 	public double getDataExtractionRatio() {
 		return (((double)decodedPackets)/((double)sentPackets))*100;
+	}
+
+	public int getEndDevices() {
+		return endDevices;
+	}
+
+	public void setEndDevices(int endDevices) {
+		this.endDevices = endDevices;
 	}
 
 	@Override

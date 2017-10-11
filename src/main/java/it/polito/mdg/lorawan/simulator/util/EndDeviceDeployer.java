@@ -128,7 +128,16 @@ public class EndDeviceDeployer {
 			throw new Exception("impossible to assign a suitable data rate for end device with rssi: "+rssi);
 		}
 		
-		EndDevice endDevice = new EndDevice(devId, application, channel, choosenDr, dc, distance, rssi, Math.random());
+		EndDevice endDevice;
+		if(application.getMessages() == -1){
+			//application with periodic messages
+			endDevice = new EndDevice(devId, application, channel, choosenDr, dc, distance, rssi, Math.random());
+		}
+		else{
+			//application with random messages
+			endDevice = new EndDevice(devId, application, channel, choosenDr, dc, distance, rssi, -1);
+		}
+		
 		
 		return endDevice;
 	}

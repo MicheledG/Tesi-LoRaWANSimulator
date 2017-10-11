@@ -174,7 +174,7 @@ public class Simulator {
 				System.out.println("======================");
 				
 				//let the end devices send all their packets
-				EndDeviceScheduler.scheduleEndDevices(applicationPackets, endDevices);
+				EndDeviceScheduler.scheduleEndDevices(applicationPackets, endDevices, config.getTime());
 				
 				//collect the sent packets
 				List<Packet> sentPackets = new ArrayList<>();
@@ -208,6 +208,7 @@ public class Simulator {
 				overallResult.setSentPackets(sentPackets.size());
 				overallResult.setReceivedPackets(receivedPackets.size());
 				overallResult.setDecodedPackets(decodedPackets.size());
+				overallResult.setEndDevices(effectiveEndDevicesNumber);
 				
 				//print to the user the overall results
 				System.out.println("======================");

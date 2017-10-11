@@ -58,10 +58,20 @@ public class ApplicationsProfiler {
 		Map<Integer, Integer> applicationPackets = new HashMap<>();		
 		int appId;
 		int packetsNumber;
+		double intervalsNumber;
 		
 		for (Application application: applications) {
 			appId = application.getAppId();
-			packetsNumber = (int) ((time * 60) / (application.getPacketInterval()));
+			if(application.getMessages() == -1){
+				//application that send periodic messages
+				packetsNumber = (int) ((time * 60) / (application.getPacketInterval()));
+			}
+			else{
+				//application that send random messages
+				intervalsNumber = ((double)(time * 60)) / (application.getPacketInterval());
+				packetsNumber = (int) intervalsNumber * application.getMessages();
+				
+			}
 			applicationPackets.put(appId, packetsNumber);
 		}
 		
