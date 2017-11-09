@@ -3,14 +3,19 @@
 	"range": 4.4,
 	"gwHeight": 25,
 	"edHeight": 2.5,
-	"endDeviceNumber": 11462,
+	"endDeviceNumber": 13583,
 	"frequency": 868,
 	"txPower": 14,
 	"dutyCycle": 0.01,
-	"channelNumber": 1,
+	"channelNumber": 3,
 	"decodingPath": 8,
 	"collisionAlgorithm": 0,
 	"dataRates": [
+		{
+			"sf": 12,
+			"bw": 125000,
+			"minSensitivity": -137
+		},
 		{
 			"sf": 11,
 			"bw": 125000,
@@ -40,7 +45,7 @@
 	"applications": [	
 		{
 			"appId": 1,
-			"deviceDensity": 9,
+			"deviceDensity": 200,
 			"payloadSize": 9,
 			"CR": 1,
 			"IH": 1,

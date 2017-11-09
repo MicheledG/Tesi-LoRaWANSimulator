@@ -1,6 +1,6 @@
 {
-	"time":1440,
-	"range": 5,
+	"time":10080,
+	"range": 4.4,
 	"gwHeight": 25,
 	"edHeight": 2.5,
 	"endDeviceNumber": 3500,
@@ -11,11 +11,6 @@
 	"decodingPath": 8,
 	"collisionAlgorithm": 0,
 	"dataRates": [
-		{
-			"sf": 12,
-			"bw": 125000,
-			"minSensitivity": -137
-		},
 		{
 			"sf": 11,
 			"bw": 125000,

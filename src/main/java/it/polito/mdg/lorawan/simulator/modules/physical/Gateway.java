@@ -8,6 +8,7 @@ import it.polito.mdg.lorawan.simulator.modules.logical.Packet;
 
 public class Gateway {
 
+	private static final double DEFAULT_POWER_THRESHOLD = 1; //difference in dB between two RSSI in order to correctly decode the more powerful
 	private int decodingPathNumber;
 	private Packet[] decodingPath;
 	
@@ -171,7 +172,7 @@ public class Gateway {
 			double interfererEndTime = interferer.getEndTime();
 			
 			// Apply LoRa collision detection algorithm
-			if(interfered.getRssi() >= interferer.getRssi()){
+			if(interfered.getRssi() >= interferer.getRssi() + DEFAULT_POWER_THRESHOLD){
 				if(interfererStartingTime <= interferedStartingTime &&
 						interferedStartingTime <= interfererEndTime){
 					//collision
@@ -186,6 +187,11 @@ public class Gateway {
 				}
 				else if(interfererStartingTime <= interferedEndTime &&
 						interferedEndTime<= interfererEndTime){
+					//collision
+					return true;
+				}
+				else if(interfererStartingTime >= interferedStartingTime &&
+						interferedEndTime >= interfererEndTime){
 					//collision
 					return true;
 				}
@@ -223,6 +229,11 @@ public class Gateway {
 			}
 			else if(interfererStartingTime <= interferedEndTime &&
 					interferedEndTime<= interfererEndTime){
+				//collision
+				return true;
+			}
+			else if(interfererStartingTime >= interferedStartingTime &&
+					interferedEndTime >= interfererEndTime){
 				//collision
 				return true;
 			}

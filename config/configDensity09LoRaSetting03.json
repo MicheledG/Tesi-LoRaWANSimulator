@@ -1,0 +1,85 @@
+{
+    "time" : 10080,
+    "range" : 4.4,
+    "gwHeight" : 25.0,
+    "edHeight" : 2.5,
+    "frequency" : 868.0,
+    "txPower" : 14.0,
+    "dutyCycle" : 0.01,
+    "channelNumber" : 3,
+	"decodingPath" : 8,
+    "endDeviceNumber" : 22135,
+    "collisionAlgorithm" : 0,
+    "dataRates" : [ {
+      "sf" : 7,
+      "bw" : 125000,
+      "minSensitivity" : -124.0
+    }, {
+      "sf" : 8,
+      "bw" : 125000,
+      "minSensitivity" : -129.0
+    }, {
+      "sf" : 9,
+      "bw" : 125000,
+      "minSensitivity" : -130.0
+    }, {
+      "sf" : 10,
+      "bw" : 125000,
+      "minSensitivity" : -133.0
+    }, {
+      "sf" : 11,
+      "bw" : 125000,
+      "minSensitivity" : -135.0
+    } ],
+    "applications" : [ {
+      "appId" : 1,
+      "deviceDensity" : 20.0,
+      "payloadSize" : 9,
+      "appInterval" : 60.0,
+      "messages" : -1,
+      "CRC" : 1,
+      "Npp" : 8,
+      "CR" : 1,
+      "IH" : 1
+    }, {
+      "appId" : 2,
+      "deviceDensity" : 2000.0,
+      "payloadSize" : 36,
+      "appInterval" : 86400.0,
+      "messages" : 60,
+      "CRC" : 1,
+      "Npp" : 8,
+      "CR" : 1,
+      "IH" : 1
+    }, {
+      "appId" : 3,
+      "deviceDensity" : 350.0,
+      "payloadSize" : 10,
+      "appInterval" : 3600.0,
+      "messages" : -1,
+      "CRC" : 1,
+      "Npp" : 8,
+      "CR" : 1,
+      "IH" : 1
+    }, {
+      "appId" : 4,
+      "deviceDensity" : 762.0,
+      "payloadSize" : 50,
+      "appInterval" : 86400.0,
+      "messages" : 5,
+      "CRC" : 1,
+      "Npp" : 8,
+      "CR" : 1,
+      "IH" : 1
+    }, {
+      "appId" : 6,
+      "deviceDensity" : 1.0,
+      "payloadSize" : 50,
+      "appInterval" : 3600.0,
+      "messages" : -1,
+      "CRC" : 1,
+      "Npp" : 8,
+      "CR" : 1,
+      "IH" : 1
+    } ]
+  }
