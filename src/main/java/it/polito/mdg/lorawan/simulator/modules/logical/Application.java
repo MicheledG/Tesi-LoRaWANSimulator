@@ -51,9 +51,9 @@ public class Application implements Comparable<Application> {
 	public void setPayloadSize(int payloadSize) {
 		this.payloadSize = payloadSize;
 	}
-	public double getPacketInterval() {
-		return appInterval;
-	}
+	//public double getPacketInterval() {
+	//	return appInterval;
+	//}
 	
 	@JsonProperty("CR")
 	public int getCR() {

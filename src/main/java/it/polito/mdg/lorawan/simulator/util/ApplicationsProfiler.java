@@ -64,11 +64,11 @@ public class ApplicationsProfiler {
 			appId = application.getAppId();
 			if(application.getMessages() == -1){
 				//application that send periodic messages
-				packetsNumber = (int) ((time * 60) / (application.getPacketInterval()));
+				packetsNumber = (int) ((time * 60) / (application.getAppInterval()));
 			}
 			else{
 				//application that send random messages
-				intervalsNumber = ((double)(time * 60)) / (application.getPacketInterval());
+				intervalsNumber = ((double)(time * 60)) / (application.getAppInterval());
 				packetsNumber = (int) intervalsNumber * application.getMessages();
 				
 			}

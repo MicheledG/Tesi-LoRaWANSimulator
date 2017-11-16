@@ -220,7 +220,7 @@ public class EndDevice {
 		
 		if(this.application.getMessages() == -1){
 			//periodic messages
-			this.packetInterval = Math.max(dcPacketInterval, this.application.getPacketInterval());
+			this.packetInterval = Math.max(dcPacketInterval, this.application.getAppInterval());
 			this.periodicEndDevice = true;
 		}
 		else{

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="it.polito.mdg.lorawan.simulator.Simulator" project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/Simulator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2" y="87"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="2" language="java" name="it.polito.mdg.lorawan.simulator.model" project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/model" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="273" y="31"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="3" language="java" name="it.polito.mdg.lorawan.simulator.model.Config" project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/model/Config.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="237" y="97"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="it.polito.mdg.lorawan.simulator.model.SimulationSummary" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/model/SimulationSummary.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="242" y="297"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="it.polito.mdg.lorawan.simulator.model.statistics.StatisticsResult" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/model/statistics/StatisticsResult.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="502" y="99"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="6" language="java" name="it.polito.mdg.lorawan.simulator.model.statistics" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/model/statistics" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="543" y="32"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="it.polito.mdg.lorawan.simulator.modules.logical" project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/modules/logical" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="850" y="36"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="8" language="java" name="it.polito.mdg.lorawan.simulator.modules.logical.DataRate" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/modules/logical/DataRate.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="806" y="165"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="it.polito.mdg.lorawan.simulator.modules.logical.Application" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/modules/logical/Application.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="806" y="101"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="it.polito.mdg.lorawan.simulator.modules.logical.Packet" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/modules/logical/Packet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="808" y="225"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="11" language="java" name="it.polito.mdg.lorawan.simulator.modules.physical" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/modules/physical" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1156" y="40"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="12" language="java" name="it.polito.mdg.lorawan.simulator.modules.physical.EndDevice" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/modules/physical/EndDevice.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1111" y="105"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="it.polito.mdg.lorawan.simulator.modules.physical.Gateway" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/modules/physical/Gateway.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1112" y="162"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="it.polito.mdg.lorawan.simulator.util.EndDeviceScheduler" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/EndDeviceScheduler.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="57" y="778"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="15" language="java" name="it.polito.mdg.lorawan.simulator.util" project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="87" y="514"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="16" language="java" name="it.polito.mdg.lorawan.simulator.util.PathLossCalculator" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/PathLossCalculator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="56" y="839"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="it.polito.mdg.lorawan.simulator.util.Configurator" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/Configurator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="57" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="it.polito.mdg.lorawan.simulator.util.EndDeviceDeployer" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/EndDeviceDeployer.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="57" y="718"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="it.polito.mdg.lorawan.simulator.util.ApplicationsProfiler" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/ApplicationsProfiler.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="58" y="589"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="it.polito.mdg.lorawan.simulator.util.statistics.StatisticsCalculator" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/statistics/StatisticsCalculator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="338" y="580"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="21" language="java" name="it.polito.mdg.lorawan.simulator.util.statistics" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/statistics" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="377" y="515"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="22" language="java" name="it.polito.mdg.lorawan.simulator.util.ResultsWriter" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/ResultsWriter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="61" y="972"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="it.polito.mdg.lorawan.simulator.util.SummaryWriter" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/SummaryWriter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="61" y="1098"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="it.polito.mdg.lorawan.simulator.util.SummaryCrawler" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/SummaryCrawler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="62" y="1032"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="it.polito.mdg.lorawan.simulator.util.ResultInformationCrawler" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/util/ResultInformationCrawler.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="63" y="903"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <package id="26" language="java" name="it.polito.mdg.lorawan.simulator" project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="33" y="28"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="27" language="java" name="it.polito.mdg.lorawan.simulator.model.ResultInformation" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/model/ResultInformation.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="240" y="158"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="it.polito.mdg.lorawan.simulator.model.SimulationResult" 
+    project="Tesi-LoRaWANSimulator" 
+    file="/Tesi-LoRaWANSimulator/src/main/java/it/polito/mdg/lorawan/simulator/model/SimulationResult.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="240" y="235"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

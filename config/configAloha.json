@@ -1,0 +1,32 @@
+{
+	"time":4,
+	"range": 4.4,
+	"gwHeight": 25,
+	"edHeight": 2.5,
+	"endDeviceNumber": 3500,
+	"frequency": 868,
+	"txPower": 14,
+	"dutyCycle": 0.01,
+	"channelNumber": 1,
+	"decodingPath": 1,
+	"collisionAlgorithm": 1,
+	"dataRates": [	
+		{
+			"sf": 11,
+			"bw": 125000,
+			"minSensitivity": -135
+		}		
+	],
+	"applications": [	
+		{
+			"appId": 1,
+			"deviceDensity": 1000,
+			"payloadSize": 9,
+			"CR": 1,
+			"IH": 1,
+			"Npp": 8,
+			"CRC": 1,
+			"appInterval": 60  
+		}
+	]
+}
